@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum LOCALE {
+  EN
+  ES
+}
+
+enum PERMISSIONS {
+  ADMIN
+  MEMBER
+}
+
+model User {
+  id       String  @id @default(cuid())
+  fullName String?
+  email    String  @unique
+  image    String?
+  locale   LOCALE  @default(EN)
+
+  BusinessEmployee BusinessEmployee[]
+
+  @@index([email])
+}
+
+model Business {
+  id    String  @id @default(cuid())
+  name  String
+  image String?
+
+  BusinessEmployee BusinessEmployee[]
+  BusinessRole     BusinessRole[]
+}
+
+model BusinessRole {
+  id          String      @id @default(cuid())
+  name        String
+  color       String
+  permissions PERMISSIONS @default(MEMBER)
+  businessId  String
+
+  business         Business           @relation(fields: [businessId], references: [id])
+  BusinessEmployee BusinessEmployee[]
+}
+
+model BusinessEmployee {
+  id         String @id @default(cuid())
+  userId     String
+  businessId String
+  roleId     String
+
+  user     User         @relation(fields: [userId], references: [id])
+  business Business     @relation(fields: [businessId], references: [id])
+  role     BusinessRole @relation(fields: [roleId], references: [id])
+
+  @@unique([businessId, userId])
+}
