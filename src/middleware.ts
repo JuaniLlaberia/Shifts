@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { notFound } from 'next/navigation';
 
 import { auth } from './auth';
 import { db } from './db';
@@ -7,7 +8,7 @@ export default auth(async req => {
   const url = req.nextUrl.clone();
 
   // If user is not auth => Redirect to sign-in page
-  if (!req.auth) {
+  if (!req.auth || !req.auth.user?.email) {
     url.pathname = '/sign-in';
     return NextResponse.redirect(url);
   }
@@ -16,7 +17,14 @@ export default auth(async req => {
   const businessIdMatch = url.pathname.match(/\/business\/([^\/]+)/);
   if (businessIdMatch) {
     const businessId = businessIdMatch[1];
-    const userId = 'cm8db762h0000utd40slt9tzt';
+
+    const user = await db.user.findUnique({
+      where: { email: req.auth.user?.email },
+      select: { id: true },
+    });
+    if (!user) return notFound();
+
+    const userId = user.id;
 
     const cacheKey = `biz_member_${userId}_${businessId}`;
     const cachedValue = req.cookies.get(cacheKey)?.value;
@@ -27,7 +35,7 @@ export default auth(async req => {
       return NextResponse.redirect(url);
     }
 
-    const isMember = await db.businessEmployee.findUnique({
+    const isMember = await db.employee.findUnique({
       where: { businessId_userId: { businessId, userId } },
     });
 
@@ -36,7 +44,7 @@ export default auth(async req => {
 
       response.cookies.set(cacheKey, 'false', {
         httpOnly: true,
-        maxAge: 3600, // Cache for 1 hour
+        maxAge: 3600,
         path: '/',
       });
       return response;
@@ -45,7 +53,7 @@ export default auth(async req => {
 
       response.cookies.set(cacheKey, 'true', {
         httpOnly: true,
-        maxAge: 3600, // Cache for 1 hour
+        maxAge: 3600,
         path: '/',
       });
 
