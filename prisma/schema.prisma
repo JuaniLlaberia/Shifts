@@ -108,17 +108,24 @@ model Role {
   @@index([businessId])
 }
 
+enum EmployeeStatus {
+  PENDING
+  JOINED
+}
+
 model Employee {
-  id         String @id @default(cuid())
+  id         String         @id @default(cuid())
   userId     String
   businessId String
   roleId     String
+  status     EmployeeStatus @default(PENDING)
 
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  business Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  role     Role      @relation(fields: [roleId], references: [id], onDelete: Restrict)
-  Shift    Shift[]
-  Request  Request[]
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  business     Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  role         Role           @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  Shift        Shift[]
+  Request      Request[]
+  Notification Notification[]
 
   @@unique([businessId, userId])
   @@index([userId])
@@ -198,10 +205,10 @@ model SwapRequest {
 }
 
 model UnavailableRequest {
-  requestId     String   @id
-  startDatetime DateTime
-  endDatetime   DateTime
-  comment       String?
+  requestId String   @id
+  startDate DateTime
+  endDate   DateTime
+  comment   String?
 
   request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
 }
@@ -221,4 +228,60 @@ model VacationRequest {
   totalDays    Float
 
   request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
+}
+
+enum NotificationType {
+  REQUEST_STATUS
+  SHIFT_UPDATE
+  EVENT_UPDATE
+  GENERAL_MESSAGE
+}
+
+enum NotificationStatus {
+  READ
+  UNREAD
+}
+
+enum MessageKey {
+  // Request notifications
+  REQUEST_VACATION_APPROVED
+  REQUEST_VACATION_REJECTED
+  REQUEST_SHIFT_SWAP_APPROVED
+  REQUEST_SHIFT_SWAP_REJECTED
+  REQUEST_UNAVAILABLE_APPROVED
+  REQUEST_UNAVAILABLE_REJECTED
+
+  // Shift notifications
+  SHIFT_PUBLISHED_SINGLE
+  SHIFT_PUBLISHED_MULTIPLE
+  SHIFT_MODIFIED_SINGLE
+  SHIFT_MODIFIED_MULTIPLE
+  SHIFT_DELETED_SINGLE
+  SHIFT_DELETED_MULTIPLE
+
+  // Event notifications
+  EVENT_CREATED
+  EVENT_UPDATED
+  EVENT_CANCELED
+
+  // General notifications
+  GENERAL_MESSAGE
+}
+
+model Notification {
+  id        String             @id @default(cuid())
+  createdAt DateTime           @default(now())
+  type      NotificationType
+  status    NotificationStatus @default(UNREAD)
+
+  // Key for multilanguage
+  messageKey  MessageKey
+  messageData Json // Data required for translation message
+
+  recipientId String
+  recipient   Employee @relation(fields: [recipientId], references: [id])
+
+  @@index([recipientId])
+  @@index([type])
+  @@index([createdAt])
 }
