@@ -18,8 +18,8 @@ const swapRequestSchema = baseRequestSchema.extend({
 
 const unavailableRequestSchema = baseRequestSchema.extend({
   type: z.literal(RequestType.UNAVAILABLE),
-  startDatetime: z.coerce.date(),
-  endDatetime: z.coerce.date(),
+  startDate: z.coerce.date(),
+  endDate: z.coerce.date(),
   comment: z.optional(z.string()),
 });
 
@@ -42,12 +42,86 @@ export const deleteRequestValidator = z.object({
   businessId: z.string().cuid({ message: 'Invalid business id' }),
 });
 
-export const acceptRequestValidator = z.object({
+// Accept request
+export const baseApproveRequestValidator = z.object({
   requestId: z.string().cuid({ message: 'Invalid request id' }),
   businessId: z.string().cuid({ message: 'Invalid business id' }),
+  type: z.nativeEnum(RequestType),
+  comments: z.optional(z.string()),
+  extraData: z.object({}),
 });
 
-export const rejectRequestValidator = z.object({
+const unavailableApprovedValidator = baseApproveRequestValidator.extend({
+  type: z.literal(RequestType.UNAVAILABLE),
+  extraData: z.object({
+    createdBy: z.string().cuid({ message: 'Invalid employee id' }),
+    startDate: z.coerce.date(),
+    endDate: z.coerce.date(),
+  }),
+});
+
+const shiftSwapApprovedValidator = baseApproveRequestValidator.extend({
+  type: z.literal(RequestType.SWAP),
+  extraData: z.object({
+    createdBy: z.string().cuid({ message: 'Invalid employee id' }),
+    originalShiftId: z.string().cuid({ message: 'Invalid original shift id' }),
+    requestedShiftId: z
+      .string()
+      .cuid({ message: 'Invalid requested shift id' }),
+  }),
+});
+
+const vacationApprovedValidator = baseApproveRequestValidator.extend({
+  type: z.literal(RequestType.VACATION),
+  extraData: z.object({
+    createdBy: z.string().cuid({ message: 'Invalid employee id' }),
+    startDate: z.string().or(z.date()),
+    endDate: z.string().or(z.date()),
+  }),
+});
+
+// Combine schemas with discriminated union
+export const acceptRequestValidator = z.discriminatedUnion('type', [
+  unavailableApprovedValidator,
+  shiftSwapApprovedValidator,
+  vacationApprovedValidator,
+]);
+
+// Reject request
+const baseRejectRequestValidator = z.object({
   requestId: z.string().cuid({ message: 'Invalid request id' }),
   businessId: z.string().cuid({ message: 'Invalid business id' }),
+  type: z.nativeEnum(RequestType),
+  extraData: z.object({}),
 });
+
+const unavailableRejectedValidator = baseRejectRequestValidator.extend({
+  type: z.literal(RequestType.UNAVAILABLE),
+  extraData: z.object({
+    createdBy: z.string().cuid({ message: 'Invalid employee id' }),
+    date: z.string().or(z.date()),
+  }),
+});
+
+const shiftSwapRejectedValidator = baseRejectRequestValidator.extend({
+  type: z.literal(RequestType.SWAP),
+  extraData: z.object({
+    createdBy: z.string().cuid({ message: 'Invalid employee id' }),
+    shiftDate: z.string().or(z.date()),
+  }),
+});
+
+const vacationRejectedValidator = baseRejectRequestValidator.extend({
+  type: z.literal(RequestType.VACATION),
+  extraData: z.object({
+    createdBy: z.string().cuid({ message: 'Invalid employee id' }),
+    startDate: z.string().or(z.date()),
+    endDate: z.string().or(z.date()),
+  }),
+});
+
+export const rejectRequestValidator = z.discriminatedUnion('type', [
+  unavailableRejectedValidator,
+  shiftSwapRejectedValidator,
+  vacationRejectedValidator,
+]);
