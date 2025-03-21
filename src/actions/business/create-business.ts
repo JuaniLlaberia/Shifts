@@ -51,6 +51,7 @@ export const createBusiness = authenticatedAction
               userId,
               businessId,
               roleId,
+              status: 'JOINED',
             },
           });
         });

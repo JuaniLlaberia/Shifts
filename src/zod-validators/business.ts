@@ -29,3 +29,11 @@ export const updateBusinessValidator = z.object({
 export const deleteBusinessValidator = z.object({
   businessId: z.string().cuid({ message: 'Invalid business id' }),
 });
+
+export const joinBusinessValidator = z.object({
+  businessId: z.string().cuid({ message: 'Invalid business id' }),
+});
+
+export const leaveBusinessValidator = z.object({
+  businessId: z.string().cuid({ message: 'Invalid business id' }),
+});
