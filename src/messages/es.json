@@ -27,8 +27,8 @@
         "multiple": "{count} turnos fueron modificados"
       },
       "deleted": {
-        "single": "Tu turno el {date} fue cancelado",
-        "multiple": "{count} turnos fueron cancelados"
+        "single": "Algunos de tus turnos fueron cancelados",
+        "multiple": "Algunos de tus turnos fueron cancelados"
       }
     },
     "event": {

@@ -27,8 +27,8 @@
         "multiple": "{count} of your upcoming shifts have been modified"
       },
       "deleted": {
-        "single": "Your shift on {date} has been canceled",
-        "multiple": "{count} of your shifts have been canceled"
+        "single": "Some of your shifts has been canceled",
+        "multiple": "Some of your shifts has been canceled"
       }
     },
     "event": {
