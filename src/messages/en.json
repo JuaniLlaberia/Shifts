@@ -1,5 +1,43 @@
 {
   "Homepage": {
     "title": "Welcome"
+  },
+  "notification": {
+    "request": {
+      "vacation": {
+        "approved": "Your vacation request from {startDate} to {endDate} has been approved",
+        "rejected": "Your vacation request from {startDate} to {endDate} was declined"
+      },
+      "shift_swap": {
+        "approved": "Your shift swap request for {shiftDate} has been approved",
+        "rejected": "Your shift swap request for {shiftDate} was declined"
+      },
+      "unavailable": {
+        "approved": "Your unavailability request for {date} has been approved",
+        "rejected": "Your unavailability request for {date} was declined"
+      }
+    },
+    "shift": {
+      "published": {
+        "single": "A new shift has been assigned to you on {date}",
+        "multiple": "{count} new shifts have been published for you from {startDate} to {endDate}"
+      },
+      "modified": {
+        "single": "Your shift on {date} has been modified",
+        "multiple": "{count} of your upcoming shifts have been modified"
+      },
+      "deleted": {
+        "single": "Your shift on {date} has been canceled",
+        "multiple": "{count} of your shifts have been canceled"
+      }
+    },
+    "event": {
+      "created": "New event: {eventName} on {eventDate}",
+      "updated": "Event update: {eventName} on {eventDate} has been modified",
+      "canceled": "Event canceled: {eventName} on {eventDate}"
+    },
+    "general": {
+      "message": "{message}"
+    }
   }
 }

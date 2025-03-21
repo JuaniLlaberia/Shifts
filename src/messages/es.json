@@ -1,5 +1,43 @@
 {
   "Homepage": {
     "title": "Bienvenido"
+  },
+  "notification": {
+    "request": {
+      "vacation": {
+        "approved": "Tu solicitud de vacaciones del {startDate} al {endDate} fue aprobado",
+        "rejected": "Tu solicitud de vacaciones del {startDate} al {endDate} fue rechazado"
+      },
+      "shift_swap": {
+        "approved": "Tu solicitud de cambio de turno para el {shiftDate} fue aprobado",
+        "rejected": "Tu solicitud de cambio de turno para el {shiftDate} fue rechazado"
+      },
+      "unavailable": {
+        "approved": "Tu solcitud de ausencia para el {date} fue aprobado",
+        "rejected": "Tu solcitud de ausencia para el {date} fue rechazado"
+      }
+    },
+    "shift": {
+      "published": {
+        "single": "Un nuevo turno se te fue asignado el día {date}",
+        "multiple": "{count} nuevos turnos fueron publicados para vos desde {startDate} al {endDate}"
+      },
+      "modified": {
+        "single": "Tu turno del {date} fue modificado",
+        "multiple": "{count} turnos fueron modificados"
+      },
+      "deleted": {
+        "single": "Tu turno el {date} fue cancelado",
+        "multiple": "{count} turnos fueron cancelados"
+      }
+    },
+    "event": {
+      "created": "Nuevo evento: {eventName} el {eventDate}",
+      "updated": "Cambio en el evento: {eventName} el {eventDate} fue modificado",
+      "canceled": "Evento cancelado: {eventName} el {eventDate}"
+    },
+    "general": {
+      "message": "{message}"
+    }
   }
 }
