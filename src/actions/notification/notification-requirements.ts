@@ -18,8 +18,8 @@ export const notificationDataRequirements = {
   SHIFT_MODIFIED_SINGLE: ['date'],
   SHIFT_MODIFIED_MULTIPLE: ['count'],
   // Deleted
-  SHIFT_DELETED_SINGLE: ['date'],
-  SHIFT_DELETED_MULTIPLE: ['count'],
+  SHIFT_DELETED_SINGLE: [],
+  SHIFT_DELETED_MULTIPLE: [],
 
   // ## EVENTS ##
   EVENT_CREATED: ['eventName', 'eventDate'],
