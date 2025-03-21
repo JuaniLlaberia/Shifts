@@ -79,6 +79,7 @@ model Business {
   Department       Department[]
   Template         Template[]
   Request          Request[]
+  Event            Event[]
 }
 
 model Department {
@@ -184,6 +185,7 @@ model Request {
   vacationRequest    VacationRequest?
 
   @@index([createdBy])
+  @@index([businessId])
 }
 
 model SwapRequest {
@@ -284,4 +286,17 @@ model Notification {
   @@index([recipientId])
   @@index([type])
   @@index([createdAt])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  date        DateTime
+  location    String
+  businessId  String
+
+  business Business @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
 }
