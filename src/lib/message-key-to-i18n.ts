@@ -1,0 +1,18 @@
+export const messageKeyToI18nKey = {
+  REQUEST_VACATION_APPROVED: 'notification.request.vacation.approved',
+  REQUEST_VACATION_REJECTED: 'notification.request.vacation.rejected',
+  REQUEST_SHIFT_SWAP_APPROVED: 'notification.request.shift_swap.approved',
+  REQUEST_SHIFT_SWAP_REJECTED: 'notification.request.shift_swap.rejected',
+  REQUEST_UNAVAILABLE_APPROVED: 'notification.request.unavailable.approved',
+  REQUEST_UNAVAILABLE_REJECTED: 'notification.request.unavailable.rejected',
+  SHIFT_PUBLISHED_SINGLE: 'notification.shift.published.single',
+  SHIFT_PUBLISHED_MULTIPLE: 'notification.shift.published.multiple',
+  SHIFT_MODIFIED_SINGLE: 'notification.shift.modified.single',
+  SHIFT_MODIFIED_MULTIPLE: 'notification.shift.modified.multiple',
+  SHIFT_DELETED_SINGLE: 'notification.shift.deleted.single',
+  SHIFT_DELETED_MULTIPLE: 'notification.shift.deleted.multiple',
+  EVENT_CREATED: 'notification.event.created',
+  EVENT_UPDATED: 'notification.event.updated',
+  EVENT_CANCELED: 'notification.event.canceled',
+  GENERAL_MESSAGE: 'notification.general.message',
+};
