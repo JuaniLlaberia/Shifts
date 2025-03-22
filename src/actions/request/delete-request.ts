@@ -24,5 +24,6 @@ export const deleteRequest = memberAction
       await db.request.delete({ where: { id: request.id } });
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

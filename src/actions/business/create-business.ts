@@ -60,6 +60,7 @@ export const createBusiness = authenticatedAction
           console.log(`Transaction failed: ${error.message}`);
           throw error.message;
         }
+        throw new Error('Unknown error occurred');
       }
     }
   );

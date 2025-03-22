@@ -16,5 +16,6 @@ export const deleteEmployee = protectedAction
       revalidatePath(`/business/${businessId}/employees`);
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

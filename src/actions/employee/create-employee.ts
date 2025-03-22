@@ -32,6 +32,7 @@ export const createEmployee = protectedAction
         //Send email
       } catch (error) {
         if (error instanceof Error) throw error.message;
+        throw new Error('Unknown error occurred');
       }
     }
   );

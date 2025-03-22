@@ -11,8 +11,7 @@ export const deleteBusiness = protectedAction
     try {
       await db.business.delete({ where: { id: businessId } });
     } catch (error) {
-      if (error instanceof Error) {
-        throw error.message;
-      }
+      if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

@@ -16,5 +16,6 @@ export const deleteTemplate = protectedAction
       revalidatePath(`/business/${businessId}/templates`);
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

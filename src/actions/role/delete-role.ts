@@ -24,5 +24,6 @@ export const deleteRole = protectedAction
           throw error.message;
         }
       }
+      throw new Error('Unknown error occurred');
     }
   });

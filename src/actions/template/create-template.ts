@@ -23,9 +23,8 @@ export const createTempalte = protectedAction
 
         revalidatePath(`/business/${businessId}/templates`);
       } catch (error) {
-        if (error instanceof Error) {
-          throw error.message;
-        }
+        if (error instanceof Error) throw error.message;
+        throw new Error('Unknown error occurred');
       }
     }
   );

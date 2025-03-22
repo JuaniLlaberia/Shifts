@@ -16,5 +16,6 @@ export const leaveBusiness = memberAction
       redirect('/');
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

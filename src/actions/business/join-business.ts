@@ -40,5 +40,7 @@ export const joinBusiness = authenticatedAction
       }
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
+
     }
   });

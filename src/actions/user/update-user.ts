@@ -19,5 +19,6 @@ export const updateUser = authenticatedAction
       });
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

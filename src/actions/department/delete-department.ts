@@ -24,5 +24,6 @@ export const deleteDepartment = protectedAction
           throw error.message;
         }
       }
+      throw new Error('Unknown error occurred');
     }
   });

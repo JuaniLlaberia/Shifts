@@ -10,5 +10,6 @@ export const deleteUser = authenticatedAction
       await db.user.delete({ where: { id: userId } });
     } catch (error) {
       if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });

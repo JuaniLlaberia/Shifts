@@ -26,9 +26,8 @@ export const updateRole = protectedAction
 
         revalidatePath(`/business/${businessId}/roles`);
       } catch (error) {
-        if (error instanceof Error) {
-          throw error.message;
-        }
+        if (error instanceof Error) throw error.message;
+        throw new Error('Unknown error occurred');
       }
     }
   );

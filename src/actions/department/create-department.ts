@@ -17,8 +17,7 @@ export const createDepartment = protectedAction
         },
       });
     } catch (error) {
-      if (error instanceof Error) {
-        throw error.message;
-      }
+      if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
   });
