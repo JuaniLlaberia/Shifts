@@ -102,9 +102,9 @@ model Role {
   businessId   String
   departmentId String
 
-  business         Business   @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  department       Department @relation(fields: [departmentId], references: [id], onDelete: Restrict)
-  BusinessEmployee Employee[]
+  business   Business   @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+  employee   Employee[]
 
   @@index([businessId])
 }
@@ -295,6 +295,7 @@ model Event {
   date        DateTime
   location    String
   businessId  String
+  createdAt   DateTime @default(now())
 
   business Business @relation(fields: [businessId], references: [id])
 
