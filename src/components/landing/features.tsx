@@ -20,14 +20,14 @@ const Features = () => {
   const keys = ['scheduling', 'roles', 'clock', 'location', 'events'] as const;
 
   return (
-    <section className='w-[90%] min-h-screen py-32 px-2 md:px-20'>
+    <section className='w-[90%] min-h-screen py-32 px-2 md:px-20' id='features'>
       <div className='grid md:grid-cols-2 gap-16'>
         <div className='md:sticky md:top-24 self-start space-y-8 z-10'>
           <h2 className='text-7xl'>{t('title')}</h2>
           <p className='text-2xl text-landing-main-text-secondary'>
             {t('description')}
           </p>
-          <Link href='' className={buttonVariants({ size: 'lg' })}>
+          <Link href='/business-new' className={buttonVariants({ size: 'lg' })}>
             {t('buttonAction')}
           </Link>
         </div>

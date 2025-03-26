@@ -5,6 +5,7 @@ import { Menu, MoveRight, X } from 'lucide-react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useState } from 'react';
 import { User } from '@prisma/client';
+import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
 import { Button, buttonVariants } from '../ui/button';
@@ -14,28 +15,11 @@ type NavbarUIType = {
   user?: User;
 };
 
-const LINKS = [
-  {
-    label: 'Features',
-    link: '#',
-  },
-  {
-    label: 'Pricing',
-    link: '/pricing',
-  },
-  {
-    label: 'About',
-    link: '/about',
-  },
-  {
-    label: 'Changelog',
-    link: '/changelog',
-  },
-];
-
 const NavbarUI = ({ user }: NavbarUIType) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isShrinked, setShrinked] = useState<boolean>(false);
+
+  const t = useTranslations('homepage.navbar');
 
   const isMobile = useIsMobile();
   const { scrollY } = useScroll();
@@ -53,8 +37,14 @@ const NavbarUI = ({ user }: NavbarUIType) => {
     }
   });
 
+  const keys = ['home', 'pricing', 'about', 'changelog'] as const;
+
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 10 }}
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true }}
       data-state={isMenuOpen ? 'active' : 'inactive'}
       className='fixed top-5 z-[110] w-full flex items-center justify-center px-2 md:px-20'
     >
@@ -105,28 +95,32 @@ const NavbarUI = ({ user }: NavbarUIType) => {
           )}
         >
           <ul className='flex flex-col md:flex-row md:items-center gap-2.5 shrink-0'>
-            {LINKS.map(({ label, link }) => (
-              <li key={link}>
+            {keys.map(key => (
+              <li key={key}>
                 <Link
-                  href={link}
+                  href={t(`links.${key}.link`)}
                   className={cn(
                     buttonVariants({
                       size: isMobile ? 'default' : 'sm',
                       variant: 'ghost',
                     }),
-                    isMobile && 'text-base font-medium'
+                    isMobile && 'text-base font-medium',
+                    !isShrinked && 'hover:bg-landing-main-card'
                   )}
                 >
-                  {label}
+                  {t(`links.${key}.label`)}
                 </Link>
               </li>
             ))}
           </ul>
           {user?.id ? (
-            <Button size='sm' className='group'>
-              Go to business
+            <Link
+              href='/business'
+              className={cn(buttonVariants({ size: 'sm' }), 'group')}
+            >
+              {t(`authButton`)}
               <MoveRight className='group-hover:translate-x-1 transition-transform ml-2' />
-            </Button>
+            </Link>
           ) : (
             <div className='flex flex-col md:flex-row gap-2 md:space-x-2'>
               <Link
@@ -135,20 +129,20 @@ const NavbarUI = ({ user }: NavbarUIType) => {
                   buttonVariants({ size: 'sm', variant: 'outline' })
                 )}
               >
-                Sign in
+                {t(`unAuthButtons.signIn`)}
               </Link>
               <Link
                 href='/business-new'
                 className={cn(buttonVariants({ size: 'sm' }), 'group')}
               >
-                Get started{' '}
+                {t(`unAuthButtons.getStarted`)}{' '}
                 <MoveRight className='group-hover:translate-x-1 transition-transform ml-2' />
               </Link>
             </div>
           )}
         </motion.div>
       </motion.nav>
-    </div>
+    </motion.div>
   );
 };
 

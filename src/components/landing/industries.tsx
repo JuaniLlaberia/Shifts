@@ -1,16 +1,19 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
   Construction,
   ChefHat,
   Popcorn,
-  ScanHeart,
+  HeartIcon as ScanHeart,
   BadgeDollarSign,
   University,
   Dumbbell,
   Hospital,
   CodeXml,
 } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -63,8 +66,8 @@ const ICONS = {
   ),
 };
 
-const Industries = async () => {
-  const t = await getTranslations('homepage.industries');
+const Industries = () => {
+  const t = useTranslations('homepage.industries');
   const keys = [
     'construction',
     'technology',
@@ -82,7 +85,23 @@ const Industries = async () => {
   const batchTree = keys.slice(6, 9);
 
   return (
-    <section className='bg-landing-second-bg flex flex-col items-center py-24 pb-36 px-2 md:px-20 rounded-t-2xl rounded-b-2xl'>
+    <motion.section
+      initial={{
+        y: 0,
+      }}
+      whileInView={{
+        y: -100,
+      }}
+      transition={{
+        duration: 0.3, // Smooth duration
+        ease: 'easeOut', // Smooth easing
+      }}
+      viewport={{
+        once: false, // Allow repeated animations
+        amount: 0, // Trigger when 10% of section is visible
+      }}
+      className='bg-landing-second-bg flex flex-col items-center py-24 pb-36 px-2 md:px-20 rounded-t-2xl rounded-b-2xl overflow-hidden'
+    >
       <div className='relative w-[90%]'>
         <div className='grid gap-8 lg:grid-cols-2 md:gap-16'>
           <div className='relative'>
@@ -91,7 +110,7 @@ const Industries = async () => {
                 {batchOne.map(key => (
                   <li
                     key={key}
-                    className='flex flex-col items-center p-6 py-10 text-center transition-all border border-landing-second-border rounded-2xl bg-landing-second-card'
+                    className='flex flex-col items-center p-6 py-10 text-center transition-all border border-landing-second-border rounded-2xl bg-landing-second-card hover:shadow-lg hover:-translate-y-1 duration-300'
                   >
                     {ICONS[key]}
                     <span className='font-medium'>{t(`cards.${key}`)}</span>
@@ -102,7 +121,7 @@ const Industries = async () => {
                 {batchTwo.map(key => (
                   <li
                     key={key}
-                    className='flex flex-col items-center p-6 py-10 text-center transition-all border border-landing-second-border rounded-2xl bg-landing-second-card'
+                    className='flex flex-col items-center p-6 py-10 text-center transition-all border border-landing-second-border rounded-2xl bg-landing-second-card hover:shadow-lg hover:-translate-y-1 duration-300'
                   >
                     {ICONS[key]}
                     <span className='font-medium'>{t(`cards.${key}`)}</span>
@@ -113,15 +132,15 @@ const Industries = async () => {
                 {batchTree.map(key => (
                   <li
                     key={key}
-                    className='flex flex-col items-center p-6 py-10 text-center transition-all border border-landing-second-border rounded-2xl bg-landing-second-card'
+                    className='flex flex-col items-center p-6 py-10 text-center transition-all border border-landing-second-border rounded-2xl bg-landing-second-card hover:shadow-lg hover:-translate-y-1 duration-300'
                   >
                     {ICONS[key]}
                     <span className='font-medium'>{t(`cards.${key}`)}</span>
                   </li>
                 ))}
               </ul>
-              <div className='w-full absolute bottom-0 bg-gradient-to-b from-transparent to-landing-second-bg h-16'></div>
-              <div className='w-full absolute top-12 bg-gradient-to-b from-landing-second-bg to-transparent h-16'></div>
+              <div className='w-full absolute bottom-0 bg-gradient-to-b from-transparent to-landing-second-bg h-20'></div>
+              <div className='w-full absolute top-10 bg-gradient-to-b from-landing-second-bg to-transparent h-20'></div>
             </div>
           </div>
 
@@ -136,9 +155,10 @@ const Industries = async () => {
             </div>
             <div className='flex'>
               <Link
-                href='#'
+                href='/business-new'
                 className={cn(
-                  buttonVariants({ variant: 'secondary', size: 'lg' })
+                  buttonVariants({ variant: 'secondary', size: 'lg' }),
+                  'hover:scale-105 transition-transform duration-300'
                 )}
               >
                 {t('buttonAction')}
@@ -149,16 +169,22 @@ const Industries = async () => {
       </div>
 
       <div className='w-[90%] flex items-center justify-center mt-48 text-landing-second-text-secondary'>
-        <p className='text-2xl md:text-5xl font-bold text-center max-w-4xl leading-16'>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className='text-2xl md:text-5xl font-bold text-center max-w-4xl leading-16'
+        >
           {t('phrase.contentOne')}{' '}
-          <span className='relative p-1 rounded-lg z-30 text-landing-second-text-primary'>
+          <span className='relative p-1 rounded-lg z-30 text-landing-second-text-primary inline-block'>
             {t('phrase.span')}{' '}
             <span className='absolute bg-amber-300/90 h-3 w-full left-0 bottom-2 -z-10' />
           </span>
           {t('phrase.contentTwo')}{' '}
-        </p>
+        </motion.p>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
