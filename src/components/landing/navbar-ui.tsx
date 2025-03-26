@@ -44,30 +44,35 @@ const NavbarUI = ({ user }: NavbarUIType) => {
     const prev = scrollY.getPrevious();
     if (!prev) return;
 
-    if (latest > prev && latest > 75) setShrinked(true);
-    else setShrinked(false);
+    const SCROLL_THRESHOLD = 25;
+
+    if (latest > prev && latest > SCROLL_THRESHOLD) {
+      setShrinked(true);
+    } else if (latest < prev && latest <= SCROLL_THRESHOLD) {
+      setShrinked(false);
+    }
   });
 
   return (
     <div
       data-state={isMenuOpen ? 'active' : 'inactive'}
-      className='fixed top-5 z-20 w-full flex items-center justify-center lg:px-20'
+      className='fixed top-5 z-[110] w-full flex items-center justify-center px-2 md:px-20'
     >
       <motion.nav
         initial={{
           width: isMobile ? '100%' : '90%',
-          backgroundColor: 'rgba(255,255,255,0)',
+          backgroundColor: '#f7f7f7',
           borderRadius: '100px',
         }}
         animate={{
           width: !isMobile && isShrinked ? '65%' : '90%',
-          backgroundColor: isShrinked
-            ? 'rgba(255,255,255,0.8)'
-            : 'rgba(255,255,255,0)',
           boxShadow: isShrinked ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
           border: isShrinked ? '1px solid rgba(0, 0, 0, 0.123)' : 'none',
           padding: isShrinked ? '6px' : '4px',
-          borderRadius: '8px',
+          borderRadius: '100px',
+          backgroundColor: isShrinked
+            ? 'rgba(255,255,255,1)'
+            : 'rgba(247,247,247,1)',
         }}
         transition={{
           type: 'tween',
@@ -118,9 +123,9 @@ const NavbarUI = ({ user }: NavbarUIType) => {
             ))}
           </ul>
           {user?.id ? (
-            <Button variant='outline' size='sm'>
+            <Button size='sm' className='group'>
               Go to business
-              <MoveRight className='ml-2' />
+              <MoveRight className='group-hover:translate-x-1 transition-transform ml-2' />
             </Button>
           ) : (
             <div className='flex flex-col md:flex-row gap-2 md:space-x-2'>
