@@ -1,6 +1,62 @@
 {
-  "Homepage": {
-    "title": "Bienvenido"
+  "homepage": {
+    "hero": {
+      "title": "Simplifica la Gestión de Turnos.",
+      "subTitle": "Maximiza la Eficiencia del Equipo.",
+      "description": "Optimiza la programación, potencia a tu equipo y elimina la burocracia administrativa",
+      "buttonAction": "Inicia Prueba Gratis",
+      "demoAction": "Reservar una demo",
+      "cardNotRequired": "Sin necesidad de tarjeta de crédito"
+    },
+    "features": {
+      "title": "Todo lo que necesitas para gestionar turnos sin esfuerzo",
+      "description": "Desde turnos seguimiento en tiempo real, nuestra plataforma todo en uno te ayuda a mantener el orden, reducir conflictos y optimizar el trabajo en equipo.",
+      "buttonAction": "Empezar ahora",
+      "features": {
+        "scheduling": {
+          "title": "Programación de Turnos",
+          "description": "Crea y gestiona horarios de empleados fácilmente con asignación automática de turnos y detección de conflictos."
+        },
+        "roles": {
+          "title": "Roles y Departamentos",
+          "description": "Organiza tu equipo definiendo roles y departamentos para una mejor distribución de tareas."
+        },
+        "clock": {
+          "title": "Registro de Entrada/Salida",
+          "description": "Permite a los empleados registrar su entrada y salida con seguimiento en tiempo real y registros automáticos."
+        },
+        "location": {
+          "title": "Multiubicación + Verificación Geográfica",
+          "description": "Garantiza una asistencia precisa con verificación de ubicación para empleados en diferentes sedes."
+        },
+        "events": {
+          "title": "Gestor de Eventos",
+          "description": "Planifica, programa y gestiona eventos de la empresa con recordatorios integrados y seguimiento de asistencia."
+        }
+      }
+    },
+    "industries": {
+      "title": "No Importa la Industria",
+      "description": "Administra tu negocio sin esfuerzo, sin importar la industria a la que pertenezcas, con las herramientas y la flexibilidad necesarias para optimizar tu flujo de trabajo.",
+      "buttonAction": "Empezar ahora",
+      "cards": {
+        "construction": "Construcción",
+        "technology": "Tecnología",
+        "gastronomy": "Gastronomía",
+        "entertainment": "Entretenimiento",
+        "healthcare": "Salud",
+        "retail": "Venta y Comercio",
+        "education": "Educación",
+        "sports": "Deportes",
+        "hospitality": "Hospitalidad"
+      },
+      "phrase": {
+        "contentOne": "Administra fácilmente y",
+        "span": "haz crecer tu negocio",
+        "contentTwo": "con herramientas poderosas para cualquier industria y tamaño."
+      }
+    },
+    "faq": { "title": "Preguntas comunes para los curiosos" }
   },
   "notification": {
     "request": {

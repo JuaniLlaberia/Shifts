@@ -1,6 +1,65 @@
 {
-  "Homepage": {
-    "title": "Welcome"
+  "homepage": {
+    "hero": {
+      "title": "Simplify Shift Management.",
+      "subTitle": {
+        "content": "Maximize ",
+        "span": "Team Efficiency."
+      },
+      "description": "Streamline scheduling, empower your workforce, and reduce administrative headaches",
+      "buttonAction": "Start free trial",
+      "demoAction": "Book a demo now",
+      "cardNotRequired": "No credit card needed"
+    },
+    "features": {
+      "title": "Everything You Need to Manage Shifts Effortlessly",
+      "description": "From scheduling to real-time attendance tracking, our all-in-one platform helps you stay organized, reduce conflicts, and keep your team running smoothly.",
+      "buttonAction": "Get started now",
+      "features": {
+        "scheduling": {
+          "title": "Shift Scheduling",
+          "description": "Easily create and manage employee schedules with automated shift assignments and conflict detection."
+        },
+        "roles": {
+          "title": "Roles & Departments",
+          "description": "Organize your workforce by defining roles and departments for better team management and task distribution."
+        },
+        "clock": {
+          "title": "Clock In/Out",
+          "description": "Allow employees to clock in and out seamlessly with real-time tracking and automated time logs."
+        },
+        "location": {
+          "title": "Multi-Location + Geo Check",
+          "description": "Ensure accurate attendance with geo-location verification for employees clocking in and out across multiple locations."
+        },
+        "events": {
+          "title": "Events Manager",
+          "description": "Plan, schedule, and manage company events effortlessly with integrated reminders and attendance tracking."
+        }
+      }
+    },
+    "industries": {
+      "title": "No Matter the Industry",
+      "description": "Effortlessly manage your business operations, regardless of the industry you belong to, with the flexibility and tools needed to streamline your workflow.",
+      "buttonAction": "Get started now",
+      "cards": {
+        "construction": "Construction",
+        "technology": "Technology",
+        "gastronomy": "Gastronomy",
+        "entertainment": "Entertainment",
+        "healthcare": "Healthcare",
+        "retail": "Retail & Sales",
+        "education": "Education",
+        "sports": "Sports",
+        "hospitality": "Hospitality"
+      },
+      "phrase": {
+        "contentOne": "Easily manage and",
+        "span": "grow your business",
+        "contentTwo": "with powerful tools for any industry and any size."
+      }
+    },
+    "faq": { "title": "Common questions for the curious" }
   },
   "notification": {
     "request": {
