@@ -46,7 +46,7 @@ const NavbarUI = ({ user }: NavbarUIType) => {
       transition={{ duration: 0.4 }}
       viewport={{ once: true }}
       data-state={isMenuOpen ? 'active' : 'inactive'}
-      className='fixed top-5 z-[110] w-full flex items-center justify-center px-2 md:px-20'
+      className='fixed top-5 z-[110] w-full flex items-center justify-center md:px-20'
     >
       <motion.nav
         initial={{
@@ -59,14 +59,16 @@ const NavbarUI = ({ user }: NavbarUIType) => {
           boxShadow: isShrinked ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
           border: isShrinked ? '1px solid rgba(0, 0, 0, 0.123)' : 'none',
           padding: isShrinked ? '6px' : '4px',
-          borderRadius: '100px',
+          borderRadius: !isMobile ? '100px' : isShrinked ? '25px' : '25px',
           backgroundColor: isShrinked
             ? 'rgba(255,255,255,1)'
-            : 'rgba(247,247,247,1)',
+            : !isMobile
+            ? 'rgba(247,247,247,1)'
+            : 'transparent',
         }}
         transition={{
           type: 'tween',
-          duration: 0.5,
+          duration: isMobile ? 0.15 : 0.5,
         }}
         className={cn(
           'flex items-center flex-col md:flex-row gap-5 md:gap-1 justify-between px-4'
@@ -91,7 +93,7 @@ const NavbarUI = ({ user }: NavbarUIType) => {
             'w-full md:w-auto in-data-[state=inactive]:hidden in-data-[state=active]:flex flex-col md:flex md:flex-row md:items-center gap-6 md:gap-8 p-3 md:p-0',
             !isShrinked &&
               isMobile &&
-              'border border-border rounded-lg md:border-0 shadow'
+              'bg-landing-main-card border border-border rounded-[25px] md:border-0 shadow'
           )}
         >
           <ul className='flex flex-col md:flex-row md:items-center gap-2.5 shrink-0'>

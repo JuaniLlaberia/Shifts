@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { CalendarDays, Clock1, MapPin, PartyPopper, Users } from 'lucide-react';
 
 import { buttonVariants } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 const ICONS = {
   scheduling: <CalendarDays className='size-16' strokeWidth={1} />,
@@ -20,14 +21,23 @@ const Features = () => {
   const keys = ['scheduling', 'roles', 'clock', 'location', 'events'] as const;
 
   return (
-    <section className='w-[90%] min-h-screen py-32 px-2 md:px-20' id='features'>
-      <div className='grid md:grid-cols-2 gap-16'>
+    <section
+      className='w-full md:w-[90%] min-h-screen py-32 px-2 md:px-20'
+      id='features'
+    >
+      <div className='px-4 md:px-0 grid md:grid-cols-2 gap-16'>
         <div className='md:sticky md:top-24 self-start space-y-8 z-10'>
-          <h2 className='text-7xl'>{t('title')}</h2>
+          <h2 className='text-5xl md:text-7xl'>{t('title')}</h2>
           <p className='text-2xl text-landing-main-text-secondary'>
             {t('description')}
           </p>
-          <Link href='/business-new' className={buttonVariants({ size: 'lg' })}>
+          <Link
+            href='/business-new'
+            className={cn(
+              buttonVariants({ size: 'lg' }),
+              'w-full text-base md:text-sm md:w-auto'
+            )}
+          >
             {t('buttonAction')}
           </Link>
         </div>

@@ -21,16 +21,16 @@ const Footer = async () => {
   ] as const;
 
   return (
-    <footer className='w-[90%] space-y-5 px-2 md:px-20'>
+    <footer className='w-full md:w-[90%] space-y-5 px-4 md:px-20'>
       {/* Call to action */}
-      <div className='py-16'>
-        <div className='relative w-full flex flex-col items-center justify-center gap-16 bg-primary p-16 py-20 rounded-3xl'>
+      <div className='py-12 md:py-16'>
+        <div className='relative w-full flex flex-col items-center justify-center gap-16 bg-landing-second-bg p-8 py-20 rounded-3xl'>
           <div className='space-y-4 z-50'>
-            <h3 className='text-landing-second-text-primary text-3xl md:text-5xl font-bold max-w-lg text-center leading-14'>
+            <h3 className='text-landing-second-text-primary text-4xl md:text-5xl font-bold max-w-xl md:max-w-lg text-center leading-14'>
               {t('callToAction.titleTop.content')}{' '}
               <span className='relative p-1 rounded-lg z-30'>
                 {t('callToAction.titleTop.span')}
-                <span className='absolute bg-amber-300/90 h-3 w-full left-0 bottom-2 -z-10' />
+                <span className='absolute bg-amber-300/90 h-3 w-44 md:w-full right-0 md:left-0 bottom-1 -z-10' />
               </span>
               <br />
               {t('callToAction.titleBottom')}
@@ -57,8 +57,8 @@ const Footer = async () => {
         </div>
       </div>
       {/* Actual footer */}
-      <div className='grid grid-cols-2 pb-6'>
-        <div>
+      <div className='grid gap-y-8 md:gap-y-0 md:grid-cols-2 pb-6'>
+        <div className='order-2 md:order-1'>
           <h4 className='text-2xl font-medium'>Shifts</h4>
           <h6 className='text-lg max-w-sm text-landing-main-text-secondary'>
             {t('subTitle')}
@@ -67,7 +67,7 @@ const Footer = async () => {
             Copyright {new Date().getFullYear()} © Shifts
           </p>
         </div>
-        <div>
+        <div className='order-1 md:order-2'>
           <ul className='grid grid-cols-2 grid-rows-4 gap-y-2'>
             {keys.map(key => (
               <li

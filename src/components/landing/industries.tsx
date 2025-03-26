@@ -93,19 +93,19 @@ const Industries = () => {
         y: -100,
       }}
       transition={{
-        duration: 0.3, // Smooth duration
-        ease: 'easeOut', // Smooth easing
+        duration: 0.3,
+        ease: 'easeOut',
       }}
       viewport={{
-        once: false, // Allow repeated animations
-        amount: 0, // Trigger when 10% of section is visible
+        once: false,
+        amount: 0,
       }}
-      className='bg-landing-second-bg flex flex-col items-center py-24 pb-36 px-2 md:px-20 rounded-t-2xl rounded-b-2xl overflow-hidden'
+      className='bg-landing-second-bg flex flex-col items-center py-16 md:py-24 pb-28 md:pb-36 px-2 md:px-20 rounded-t-2xl rounded-b-2xl overflow-hidden'
     >
       <div className='relative w-[90%]'>
-        <div className='grid gap-8 lg:grid-cols-2 md:gap-16'>
-          <div className='relative'>
-            <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 text-landing-second-text-primary'>
+        <div className='grid lg:grid-cols-2 gap-16'>
+          <div className='relative order-2 md:order-1'>
+            <div className='grid grid-cols-1 gap-6 md:gap-4 md:grid-cols-3 text-landing-second-text-primary'>
               <ul className='mt-0 space-y-6 md:mt-24'>
                 {batchOne.map(key => (
                   <li
@@ -128,7 +128,7 @@ const Industries = () => {
                   </li>
                 ))}
               </ul>
-              <ul className='mt-0 space-y-6 md:mt-24'>
+              <ul className='mt-0 space-y-6 md:mt-24 hidden md:block'>
                 {batchTree.map(key => (
                   <li
                     key={key}
@@ -139,12 +139,12 @@ const Industries = () => {
                   </li>
                 ))}
               </ul>
-              <div className='w-full absolute bottom-0 bg-gradient-to-b from-transparent to-landing-second-bg h-20'></div>
-              <div className='w-full absolute top-10 bg-gradient-to-b from-landing-second-bg to-transparent h-20'></div>
+              <div className='w-full absolute bottom-0 bg-gradient-to-b from-transparent to-landing-second-bg h-24 md:h-20'></div>
+              <div className='w-full absolute top-0 md:top-10 bg-gradient-to-b from-landing-second-bg to-transparent h-24 md:h-20'></div>
             </div>
           </div>
 
-          <div className='flex flex-col justify-center space-y-8'>
+          <div className='flex flex-col justify-center space-y-8 order-1 md:order-2'>
             <div className='space-y-4'>
               <h2 className='text-4xl md:text-5xl text-landing-second-text-primary'>
                 {t('title')}
@@ -158,7 +158,7 @@ const Industries = () => {
                 href='/business-new'
                 className={cn(
                   buttonVariants({ variant: 'secondary', size: 'lg' }),
-                  'hover:scale-105 transition-transform duration-300'
+                  'duration-300 w-full md:w-auto text-base md:text-sm'
                 )}
               >
                 {t('buttonAction')}
@@ -168,18 +168,18 @@ const Industries = () => {
         </div>
       </div>
 
-      <div className='w-[90%] flex items-center justify-center mt-48 text-landing-second-text-secondary'>
+      <div className='w-[90%] flex items-center justify-center mt-32 md:mt-48 text-landing-second-text-secondary'>
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className='text-2xl md:text-5xl font-bold text-center max-w-4xl leading-16'
+          className='text-3xl md:text-5xl font-bold text-center max-w-4xl leading-10 md:leading-16'
         >
           {t('phrase.contentOne')}{' '}
           <span className='relative p-1 rounded-lg z-30 text-landing-second-text-primary inline-block'>
             {t('phrase.span')}{' '}
-            <span className='absolute bg-amber-300/90 h-3 w-full left-0 bottom-2 -z-10' />
+            <span className='absolute bg-amber-300/90 h-3 w-full left-0 bottom-1 md:bottom-2 -z-10' />
           </span>
           {t('phrase.contentTwo')}{' '}
         </motion.p>
