@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
 
@@ -42,6 +42,18 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Landing variables */
+  --color-landing-main-bg: oklch(97.61% 0 0);
+  --color-landing-second-bg: oklch(14.73% 0.0035 17.55);
+  --color-landing-main-text-primary: oklch(0% 0 0);
+  --color-landing-main-text-secondary: oklch(0.556% 0 0 / 65%);
+  --color-landing-second-text-primary: oklch(100% 0 0);
+  --color-landing-second-text-secondary: oklch(90.06% 0 0 / 76.86%);
+  --color-landing-main-card: oklch(100% 0 0);
+  --color-landing-second-card: oklch(16.84% 0 0);
+  --color-landing-main-border: oklch(0.922% 0 0);
+  --color-landing-second-border: oklch(26.03% 0 0);
 }
 
 :root {
