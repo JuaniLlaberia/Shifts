@@ -1,5 +1,6 @@
 import Faq from '@/components/landing/faq';
 import Features from '@/components/landing/features';
+import Footer from '@/components/landing/footer';
 import Hero from '@/components/landing/hero';
 import Industries from '@/components/landing/industries';
 import Navbar from '@/components/landing/navbar';
@@ -13,9 +14,8 @@ const HomePage = () => {
         <Features />
         <Industries />
         <Faq />
+        <Footer />
       </div>
-
-      <div className='h-[1000px]'></div>
     </div>
   );
 };
