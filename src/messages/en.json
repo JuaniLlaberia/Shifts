@@ -1,5 +1,30 @@
 {
   "homepage": {
+    "navbar": {
+      "links": {
+        "home": {
+          "label": "Features",
+          "link": "/#features"
+        },
+        "pricing": {
+          "label": "Precing",
+          "link": "/pricing"
+        },
+        "about": {
+          "label": "About",
+          "link": "/about"
+        },
+        "changelog": {
+          "label": "Changelog",
+          "link": "/changelog"
+        }
+      },
+      "authButton": "Go to business",
+      "unAuthButtons": {
+        "signIn": "Sign in",
+        "getStarted": "Get started"
+      }
+    },
     "hero": {
       "title": "Simplify Shift Management.",
       "subTitle": {
@@ -59,7 +84,75 @@
         "contentTwo": "with powerful tools for any industry and any size."
       }
     },
-    "faq": { "title": "Common questions for the curious" }
+    "faq": {
+      "title": "Common questions for the curious",
+      "questions": {
+        "one": {
+          "question": "Who is Shifts for?",
+          "answer": "Shifts is for any business, big or small, that wants a simpler and more efficient way to manage employees."
+        },
+        "two": {
+          "question": "How does it work?",
+          "answer": "You create your business by following the onboarding steps. Once done, you can start adding and managing your employees."
+        },
+        "three": {
+          "question": "Do I need an internet connection to use it?",
+          "answer": "Yes, you need an internet connection for now. Offline features are not available yet."
+        },
+        "four": {
+          "question": "I don't know how to get started.",
+          "answer": "You can request a demo or watch our tutorials to learn more."
+        },
+        "five": {
+          "question": "Do you offer a free plan?",
+          "answer": "Yes! We have a free plan for up to 3 employees. If you need more features, we also offer paid plans."
+        }
+      },
+      "link": "Learn more"
+    },
+    "footer": {
+      "callToAction": {
+        "titleTop": { "content": "Let's", "span": "Start Managing" },
+        "titleBottom": "Shifts Today",
+        "description": "Easily schedule, track, and adjust shifts in just a few clicks. Keep your team organized and running smoothly!",
+        "buttonAction": "Get Started for Free"
+      },
+      "subTitle": "Stop worrying about management, focus on growing your business. With Shifts, everything is easier.",
+      "links": {
+        "features": {
+          "label": "Features",
+          "link": "#features"
+        },
+        "whatsNew": {
+          "label": "What's new?",
+          "link": "/changelog"
+        },
+        "pricing": {
+          "label": "Pricing",
+          "link": "/pricing"
+        },
+        "tos": {
+          "label": "Terms of Service",
+          "link": "/tos"
+        },
+        "about": {
+          "label": "About us",
+          "link": "/about"
+        },
+        "privacy": {
+          "label": "Privacy Policy",
+          "link": "/privacy"
+        },
+        "faq": {
+          "label": "FAQ",
+          "link": "/faq"
+        },
+        "support": {
+          "label": "Support",
+          "link": "/support"
+        }
+      }
+    }
   },
   "notification": {
     "request": {

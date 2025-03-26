@@ -1,5 +1,30 @@
 {
   "homepage": {
+    "navbar": {
+      "links": {
+        "home": {
+          "label": "Funciones",
+          "link": "/#features"
+        },
+        "pricing": {
+          "label": "Precios",
+          "link": "/pricing"
+        },
+        "about": {
+          "label": "Nosotros",
+          "link": "/about"
+        },
+        "changelog": {
+          "label": "Actualizaciones",
+          "link": "/changelog"
+        }
+      },
+      "authButton": "Ir al negocio",
+      "unAuthButtons": {
+        "signIn": "Ingresar",
+        "getStarted": "Empezar ahora"
+      }
+    },
     "hero": {
       "title": "Simplifica la Gestión de Turnos.",
       "subTitle": "Maximiza la Eficiencia del Equipo.",
@@ -56,7 +81,74 @@
         "contentTwo": "con herramientas poderosas para cualquier industria y tamaño."
       }
     },
-    "faq": { "title": "Preguntas comunes para los curiosos" }
+    "faq": {
+      "title": "Preguntas comunes para los curiosos",
+      "questions": {
+        "one": {
+          "question": "¿Para quién es Shifts?",
+          "answer": "Shifts es para cualquier negocio, grande o pequeño, que necesite una forma más simple y eficiente de gestionar a sus empleados."
+        },
+        "two": {
+          "question": "¿Cómo funciona?",
+          "answer": "Crea tu negocio siguiendo los pasos de configuración. Una vez terminado, puedes empezar a agregar y gestionar a tus empleados."
+        },
+        "three": {
+          "question": "¿Necesito conexión a internet para usarlo?",
+          "answer": "Sí, necesitas una conexión a internet por ahora. Las funciones sin conexión aún no están disponibles."
+        },
+        "four": {
+          "question": "No sé cómo empezar.",
+          "answer": "Puedes solicitar una demostración o ver nuestros tutoriales para aprender más."
+        },
+        "five": {
+          "question": "¿Ofrecen un plan gratuito?",
+          "answer": "¡Sí! Tenemos un plan gratuito para hasta 3 empleados. Si necesitas más funciones, también ofrecemos planes de pago."
+        }
+      },
+      "link": "Ver todas"
+    },
+    "footer": {
+      "callToAction": {
+        "title": "Comienza a Gestionar Turnos Hoy",
+        "description": "Programa, ajusta y supervisa turnos en solo unos clics. ¡Mantén tu equipo organizado y eficiente!",
+        "buttonAction": "Inicia Prueba Gratis"
+      },
+      "subTitle": "Stop worrying about management, focus on growing your business. With Shifts, everything is easier.Deja de preocuparte por la gestión, concéntrate en hacer crecer tu negocio. Con Shifts, todo es más fácil.",
+      "links": {
+        "features": {
+          "label": "Características",
+          "link": "#features"
+        },
+        "whats_new": {
+          "label": "¿Qué hay de nuevo?",
+          "link": "/changelog"
+        },
+        "pricing": {
+          "label": "Precios",
+          "link": "/pricing"
+        },
+        "tos": {
+          "label": "Términos de servicio",
+          "link": "/tos"
+        },
+        "about": {
+          "label": "Sobre nosotros",
+          "link": "/about"
+        },
+        "privacy": {
+          "label": "Política de privacidad",
+          "link": "/privacy"
+        },
+        "faq": {
+          "label": "Preguntas frecuentes",
+          "link": "/faq"
+        },
+        "support": {
+          "label": "Soporte",
+          "link": "/support"
+        }
+      }
+    }
   },
   "notification": {
     "request": {
