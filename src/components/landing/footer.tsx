@@ -1,13 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import { MoveRight } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '../ui/button';
 import { GridPattern } from '../special/grid-pattern';
 
-const Footer = async () => {
-  const t = await getTranslations('homepage.footer');
+const Footer = () => {
+  const t = useTranslations('homepage.footer');
 
   const keys = [
     'features',
@@ -23,7 +26,13 @@ const Footer = async () => {
   return (
     <footer className='w-full md:w-[90%] space-y-5 px-4 md:px-20'>
       {/* Call to action */}
-      <div className='py-12 md:py-16'>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        viewport={{ once: true }}
+        className='py-12 md:py-16'
+      >
         <div className='relative w-full flex flex-col items-center justify-center gap-16 bg-landing-second-bg p-8 py-20 rounded-3xl'>
           <div className='space-y-4 z-50'>
             <h3 className='text-landing-second-text-primary text-4xl md:text-5xl font-bold max-w-xl md:max-w-lg text-center leading-14'>
@@ -55,7 +64,7 @@ const Footer = async () => {
             )}
           />
         </div>
-      </div>
+      </motion.div>
       {/* Actual footer */}
       <div className='grid gap-y-8 md:gap-y-0 md:grid-cols-2 pb-6'>
         <div className='order-2 md:order-1'>
