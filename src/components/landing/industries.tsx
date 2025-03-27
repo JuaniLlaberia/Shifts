@@ -100,7 +100,7 @@ const Industries = () => {
         once: true,
         amount: 0,
       }}
-      className='bg-landing-second-bg flex flex-col items-center py-16 md:py-24 pb-28 md:pb-36 px-2 md:px-20 rounded-t-2xl rounded-b-2xl overflow-hidden'
+      className='w-full bg-landing-second-bg flex flex-col items-center py-16 md:py-24 pb-28 md:pb-36 px-2 md:px-20 rounded-t-2xl rounded-b-2xl overflow-hidden'
     >
       <div className='relative w-[90%]'>
         <div className='grid lg:grid-cols-2 gap-16'>
