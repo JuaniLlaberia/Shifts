@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '../ui/button';
-import { GridPattern } from '../special/grid-pattern';
+import { GridPattern } from '../special/grid-pattern-static';
 
 const Footer = () => {
   const t = useTranslations('homepage.footer');
@@ -33,7 +33,7 @@ const Footer = () => {
         viewport={{ once: true }}
         className='py-12 md:py-16'
       >
-        <div className='relative w-full flex flex-col items-center justify-center gap-16 bg-landing-second-bg p-8 py-20 rounded-3xl'>
+        <div className='relative w-full flex flex-col items-center justify-center gap-16 bg-landing-second-bg p-8 py-20 rounded-3xl  overflow-hidden'>
           <div className='space-y-4 z-50'>
             <h3 className='text-landing-second-text-primary text-4xl md:text-5xl font-bold max-w-xl md:max-w-lg text-center leading-14'>
               {t('callToAction.titleTop.content')}{' '}
@@ -59,8 +59,20 @@ const Footer = () => {
             <MoveRight className='group-hover:translate-x-1 transition-transform' />
           </Link>
           <GridPattern
+            squares={[
+              [4, 4],
+              [5, 1],
+              [8, 2],
+              [5, 3],
+              [5, 5],
+              [10, 10],
+              [12, 15],
+              [15, 10],
+              [10, 15],
+            ]}
             className={cn(
-              '[mask-image:radial-gradient(500px_circle_at_center,white,transparent)] opacity-50'
+              '[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]',
+              'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 stroke-gray-400/30 fill-gray-400/10'
             )}
           />
         </div>
