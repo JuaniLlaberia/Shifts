@@ -34,7 +34,13 @@ const Features = () => {
       onMouseLeave={() => setCursorVariant({ variant: 'default' })}
     >
       <div className='px-4 md:px-0 grid md:grid-cols-2 gap-16'>
-        <div className='md:sticky md:top-24 self-start space-y-8 z-10'>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className='md:sticky md:top-24 self-start space-y-8 z-10'
+        >
           <h2 className='text-5xl md:text-7xl'>{t('title')}</h2>
           <p className='text-2xl text-landing-main-text-secondary'>
             {t('description')}
@@ -52,7 +58,7 @@ const Features = () => {
           >
             {t('buttonAction')}
           </Link>
-        </div>
+        </motion.div>
         <ul className='space-y-4'>
           {keys.map(key => (
             <motion.li
