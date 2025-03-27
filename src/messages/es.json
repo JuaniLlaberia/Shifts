@@ -27,7 +27,10 @@
     },
     "hero": {
       "title": "Simplifica la Gestión de Turnos.",
-      "subTitle": "Maximiza la Eficiencia del Equipo.",
+      "subTitle": {
+        "content": "Maximiza ",
+        "span": "la Eficiencia del Equipo."
+      },
       "description": "Optimiza la programación, potencia a tu equipo y elimina la burocracia administrativa",
       "buttonAction": "Inicia Prueba Gratis",
       "demoAction": "Reservar una demo",
@@ -149,6 +152,147 @@
         }
       }
     }
+  },
+  "about": {
+    "title": "Simplifica la Gestión de Turnos.",
+    "subTitle": {
+      "content": "Maximiza ",
+      "span": "la Eficiencia del Equipo."
+    },
+    "description": "En Shifts, ayudamos a pequeñas y grandes empresas a gestionar a sus empleados de manera eficiente en el día a día. Nuestra plataforma facilita la organización, para que puedas enfocarte en hacer crecer tu negocio y alcanzar tu visión.",
+    "us": "Somos una startup apasionada por simplificar la gestión de empleados para negocios de todos los tamaños. Nuestro objetivo es ofrecer herramientas intuitivas y eficientes que optimicen las operaciones diarias, permitiendo que las empresas se enfoquen en lo realmente importante: el crecimiento y la innovación.",
+    "mission": "Creemos que la gestión de empleados no debería ser un desafío. Nuestra misión es brindar soluciones inteligentes y fáciles de usar que mejoren la productividad, optimicen la organización y simplifiquen los flujos de trabajo, haciendo que la administración del equipo sea más sencilla que nunca.",
+    "vision": "Imaginamos un mundo donde las empresas, sin importar su tamaño, puedan operar sin complicaciones ni procesos de gestión innecesariamente complejos. A través de la tecnología, queremos crear una experiencia fluida que permita a los equipos colaborar de manera eficiente, mantenerse organizados y alcanzar el éxito.",
+    "team": {
+      "title": "Conoce nuestro equipo",
+      "members": {}
+    }
+  },
+  "terms": {
+    "title": "Términos de Servicio de Shifts",
+    "intro": "Estos Términos de Servicio (\"Términos\") regulan tu acceso y uso del sitio web de Shifts ubicado en Shifts.app (el \"Sitio Web\") y los servicios ofrecidos por Shifts (el \"Servicio\").",
+    "sections": {
+      "1": {
+        "title": "Aceptación de los Términos",
+        "content": "Al acceder o utilizar el Servicio, aceptas cumplir con estos Términos. Si no estás de acuerdo con alguna parte de estos Términos, no podrás acceder ni utilizar el Servicio."
+      },
+      "2": {
+        "title": "Elegibilidad",
+        "content": "Debes tener al menos 14 años para acceder o utilizar el Servicio. Al hacerlo, declaras y garantizas que tienes al menos 14 años y la capacidad legal para celebrar este acuerdo."
+      },
+      "3": {
+        "title": "Cuentas de Usuario",
+        "content": "Es posible que necesites crear una cuenta para acceder a las funciones de Shifts. Eres responsable de la seguridad de tu cuenta y de todas las actividades que ocurran en ella."
+      },
+      "4": {
+        "title": "Conducta Prohibida",
+        "content": "Aceptas no utilizar el Servicio para ningún propósito ilegal ni de manera que viole estos Términos. Específicamente, no debes subir, publicar o transmitir contenido que sea ilegal, dañino, amenazante, abusivo, difamatorio, obsceno, odioso o ofensivo. Además, no debes violar derechos de propiedad intelectual, hacerte pasar por otra persona o entidad, ni recopilar o almacenar información personal de otros usuarios sin su consentimiento expreso."
+      },
+      "5": {
+        "title": "Terminación",
+        "content": "Shifts puede suspender o cancelar tu acceso al Servicio en cualquier momento y por cualquier motivo, con o sin previo aviso."
+      },
+      "6": {
+        "title": "Exención de Garantías",
+        "content": "El servicio se proporciona \"tal cual\" y \"según disponibilidad\", sin garantías de ningún tipo, ya sean expresas o implícitas."
+      },
+      "7": {
+        "title": "Limitación de Responsabilidad",
+        "content": "Shifts no será responsable de ningún daño directo, indirecto, incidental, especial, consecuente o punitivo derivado del uso del Servicio."
+      },
+      "8": {
+        "title": "Indemnización",
+        "content": "Aceptas indemnizar y eximir de responsabilidad a Shifts, sus directores, empleados, agentes y licenciantes de cualquier reclamación, pérdida, responsabilidad o gasto resultante de tu uso del Servicio."
+      },
+      "9": {
+        "title": "Acuerdo Completo",
+        "content": "Estos Términos constituyen el acuerdo completo entre tú y Shifts con respecto al uso del Servicio."
+      },
+      "10": {
+        "title": "Actualizaciones de los Términos de Servicio",
+        "content": "Shifts puede actualizar estos Términos periódicamente. Cualquier cambio será publicado en el Sitio Web, y el uso continuo del Servicio implicará la aceptación de los nuevos Términos."
+      },
+      "11": {
+        "title": "Resumen",
+        "content": "Al utilizar la plataforma Shifts, debes tener en cuenta que Shifts se reserva el derecho de modificar, eliminar o ajustar suscripciones, perfiles, datos o funciones para garantizar la integridad operativa de la plataforma."
+      },
+      "12": {
+        "title": "Contáctanos",
+        "content": "Si tienes preguntas sobre esta Política de Privacidad, contáctanos en juanillaberia2002@gmail.com."
+      }
+    },
+    "lastUpdated": "Última actualización: 27 de marzo de 2025"
+  },
+  "privacy": {
+    "title": "Política de Privacidad de Shifts",
+    "intro": "Esta Política de Privacidad describe cómo Shifts (\"nosotros\", \"nuestro\", o \"nos\") recopila, usa y comparte información cuando usas nuestro sitio web ubicado en Shifts.app (el \"Sitio Web\") y los servicios ofrecidos por Shifts (el \"Servicio\").",
+    "sections": {
+      "1": {
+        "title": "Información que Recopilamos",
+        "content": "Recopilamos cierta información cuando usas nuestro Servicio, incluyendo: \n - Información que nos proporcionas, como cuando creas una cuenta, envías contenido de usuario o nos contactas para soporte. \n - Información recopilada automáticamente, como tu dirección IP, información del dispositivo y datos de uso cuando accedes o utilizas nuestro Servicio."
+      },
+      "2": {
+        "title": "Cómo Usamos Tu Información",
+        "content": "Usamos la información que recopilamos para diversos fines, incluyendo: \n - Proveer, mantener y mejorar nuestro Servicio. \n - Comunicarnos contigo, incluyendo responder a tus consultas y proporcionar soporte al cliente. \n - Cumplir con obligaciones legales y hacer cumplir nuestros términos y políticas."
+      },
+      "3": {
+        "title": "Compartición de Información",
+        "content": "Podemos compartir tu información con terceros para diversos fines, como: \n - Proveedores de servicios que nos asisten en la operación de nuestro Servicio o en la realización de nuestro negocio. \n - Terceros con quienes nos autorizas a compartir tu información. \n - Agencias de la ley o entidades gubernamentales en respuesta a solicitudes legales o cuando sea necesario para el cumplimiento legal. \n - Otras partes en relación con una transacción corporativa, como una fusión o adquisición."
+      },
+      "4": {
+        "title": "Tus Opciones",
+        "content": "Tienes ciertas opciones respecto a la información que recopilamos y cómo se usa, incluyendo: \n - Actualizar o corregir tu información accediendo a la configuración de tu cuenta. \n - Optar por no participar en la recopilación y compartición de ciertos datos ajustando la configuración de tu navegador. \n - Puedes eliminar tus datos en cualquier momento. \n - Contactarnos si tienes alguna pregunta o preocupación sobre tu privacidad."
+      },
+      "5": {
+        "title": "Seguridad de Datos",
+        "content": "Tomamos medidas razonables para proteger tu información del acceso no autorizado, divulgación, alteración o destrucción."
+      },
+      "6": {
+        "title": "Cambios en Esta Política",
+        "content": "Podemos actualizar esta Política de Privacidad de vez en cuando. Te notificaremos sobre cualquier cambio publicando la nueva Política de Privacidad en el Sitio Web. Te recomendamos revisar esta Política de Privacidad periódicamente para estar al tanto de los cambios."
+      },
+      "7": {
+        "title": "Contáctanos",
+        "content": "Si tienes alguna pregunta sobre esta Política de Privacidad, por favor contáctanos en juanillaberia2002@gmail.com."
+      }
+    },
+    "lastUpdated": "Última actualización: 27 de marzo de 2025"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": {
+      "1": {
+        "question": "¿Para quién es Shifts?",
+        "answer": "Shifts es para cualquier negocio, ya sea pequeño o grande, que necesite una forma fácil de gestionar a los empleados. Ayuda a organizar horarios, hacer seguimientos y comunicarte, facilitando la gestión de todo."
+      },
+      "2": {
+        "question": "¿Cómo funciona?",
+        "answer": "Para usar Shifts, primero configuras tu negocio siguiendo unos pasos sencillos. Después, puedes empezar a agregar empleados y gestionar sus horarios, tareas y otras actividades en un solo lugar, lo que te ayuda a mantener todo organizado."
+      },
+      "3": {
+        "question": "¿Necesito una conexión a internet para usarlo?",
+        "answer": "Sí, necesitas una conexión a internet para usar Shifts. Como funciona en línea, necesitarás estar conectado para acceder a tus datos y gestionar tu negocio. Actualmente, no hay funciones disponibles sin conexión."
+      },
+      "4": {
+        "question": "No sé cómo empezar.",
+        "answer": "Si no sabes por dónde empezar, puedes solicitar una demostración o ver nuestros tutoriales fáciles de seguir. Estos te mostrarán cómo configurar tu negocio, agregar empleados y comenzar a usar la plataforma."
+      },
+      "5": {
+        "question": "¿Ofrecen un plan gratuito?",
+        "answer": "Sí, tenemos un plan gratuito para negocios con hasta 3 empleados. Incluye funciones básicas para empezar. Si necesitas más características o tienes más empleados, también ofrecemos planes de pago."
+      }
+    },
+    "link": "Contact us"
+  },
+  "notFound": {
+    "title": "Page no encontrada",
+    "description": "¡Parece que has entrado en territorio desconocido! ¡Volvamos a encaminarte!",
+    "link": "Volver"
+  },
+  "error": {
+    "title": "¡Algo salió mal!",
+    "description": "Lamentamos la molestia. Nuestro equipo ha sido notificado y está trabajando en una solución.",
+    "link": "Intentar de nuevo"
   },
   "notification": {
     "request": {

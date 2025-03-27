@@ -7,7 +7,7 @@
           "link": "/#features"
         },
         "pricing": {
-          "label": "Precing",
+          "label": "Pricing",
           "link": "/pricing"
         },
         "about": {
@@ -153,6 +153,147 @@
         }
       }
     }
+  },
+  "about": {
+    "title": "Simplify Shift Management.",
+    "subTitle": {
+      "content": "Maximize ",
+      "span": "Team Efficiency."
+    },
+    "description": "At Shifts, we help small and large businesses manage their employees efficiently every day. Our platform makes it easier to keep everything organized, so you can focus on growing your business and achieving your vision.",
+    "us": "We are a passionate startup dedicated to simplifying workforce management for businesses of all sizes. Our goal is to provide intuitive and efficient tools that streamline daily operations, allowing companies to focus on what truly matters—growth and innovation.",
+    "mission": "We believe that managing employees shouldn’t be a challenge. Our mission is to empower businesses with smart, easy-to-use solutions that enhance productivity, improve organization, and optimize workflows, making employee management simple.",
+    "vision": "We envision a world where businesses, regardless of their size, can operate smoothly without being weighed down by complex management processes. By leveraging technology, we aim to create a seamless experience that lets teams collaborate effectively, stay organized, and thrive.",
+    "team": {
+      "title": "Meet the team",
+      "members": {}
+    }
+  },
+  "terms": {
+    "title": "Shifts Terms of Service",
+    "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Shifts website located at Shifts.app (the \"Website\") and the services offered by Shifts (the \"Service\").",
+    "sections": {
+      "1": {
+        "title": "Acceptance of Terms",
+        "content": "By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access or use the Service."
+      },
+      "2": {
+        "title": "Eligibility",
+        "content": "You must be at least 14 years old to access or use the Service. By accessing or using the Service, you represent and warrant that you are at least 14 years old and legally capable of entering into this agreement."
+      },
+      "3": {
+        "title": "User Accounts",
+        "content": "You may need to create an account to access Shifts features. You are responsible for maintaining the security of your account and for all activities that occur under it."
+      },
+      "4": {
+        "title": "Prohibited Conduct",
+        "content": "You agree not to use the Service for any unlawful purpose or in any manner that violates these Terms. Specifically, you agree not to upload, post, or transmit content that is illegal, harmful, threatening, abusive, defamatory, obscene, hateful, or offensive. You must also not violate intellectual property rights, impersonate any person or entity, or collect or store personal information about other users without their explicit consent."
+      },
+      "5": {
+        "title": "Termination",
+        "content": "Shifts may terminate your access to the Service at any time, for any reason, with or without notice."
+      },
+      "6": {
+        "title": "Disclaimer of Warranties",
+        "content": "The service is provided \"as is\" and \"as available\" without warranty of any kind, express or implied."
+      },
+      "7": {
+        "title": "Limitation of Liability",
+        "content": "Shifts shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use of the service."
+      },
+      "8": {
+        "title": "Indemnification",
+        "content": "You agree to indemnify and hold harmless Shifts, its officers, directors, employees, agents, and licensors from any claims, losses, liabilities, or expenses resulting from your use of the Service."
+      },
+      "9": {
+        "title": "Entire Agreement",
+        "content": "These Terms constitute the entire agreement between you and Shifts regarding your use of the Service."
+      },
+      "10": {
+        "title": "Updates to Terms of Service",
+        "content": "Shifts may update these Terms from time to time. Any changes will be posted on the Website, and continued use of the Service constitutes acceptance of the new Terms."
+      },
+      "11": {
+        "title": "TLDR",
+        "content": "When using the Shifts platform, be aware that Shifts reserves the right to modify, remove, or adjust subscriptions, profiles, data, or features to ensure the platform's operational integrity."
+      },
+      "12": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at juanillaberia2002@gmail.com."
+      }
+    },
+    "lastUpdated": "Last updated: March 27, 2025"
+  },
+  "privacy": {
+    "title": "Shifts Privacy Policy",
+    "intro": "This Privacy Policy describes how Shifts (\"we\", \"our\", or \"us\") collects, uses, and shares information when you use our website located at Shifts.app (the \"Website\") and the services offered by Shifts (the \"Service\").",
+    "sections": {
+      "1": {
+        "title": "Information We Collect",
+        "content": "We collect certain information when you use our Service, including: \n - Information you provide to us, such as when you create an account, submit user content, or contact us for support. \n - Automatically collected information, such as your IP address, device information, and usage data when you access or use our Service."
+      },
+      "2": {
+        "title": "How We Use Your Information",
+        "content": "We use the information we collect for various purposes, including: \n - Providing, maintaining, and improving our Service. \n - Communicating with you, including responding to your inquiries and providing customer support. \n - Complying with legal obligations and enforcing our terms and policies."
+      },
+      "3": {
+        "title": "Information Sharing",
+        "content": "We may share your information with third parties for various purposes such as: \n - Service providers who assist us in operating our Service or conducting our business. \n - Third parties with whom you authorize us to share your information. \n - Law enforcement or government agencies in response to legal requests or as necessary for legal compliance. \n - Other parties in connection with a corporate transaction, such as a merger or acquisition."
+      },
+      "4": {
+        "title": "Your Choices",
+        "content": "You have certain choices regarding the information we collect and how it's used, including: \n - Updating or correcting your information by accessing your account settings. \n - Opting out of certain data collection and sharing by adjusting your browser settings. \n - You can delete your data at any time. \n - Contacting us if you have any questions or concerns about your privacy."
+      },
+      "5": {
+        "title": "Data Security",
+        "content": "We take reasonable measures to protect your information from unauthorized access, disclosure, alteration, or destruction."
+      },
+      "6": {
+        "title": "Changes to This Policy",
+        "content": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on the Website. You are advised to review this Privacy Policy periodically for any changes."
+      },
+      "7": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at juanillaberia2002@gmail.com."
+      }
+    },
+    "lastUpdated": "Last updated: March 27, 2025"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": {
+      "1": {
+        "question": "Who is Shifts for?",
+        "answer": "Shifts is for any business, whether small or large, that needs an easy way to manage employees. It helps you with scheduling, tracking, and communication, making it simpler to keep everything organized and running smoothly."
+      },
+      "2": {
+        "question": "How does it work?",
+        "answer": "To use Shifts, you first set up your business by following the simple steps. After that, you can start adding employees and manage their schedules, tasks, and other work activities in one place, making it easier to stay organized."
+      },
+      "3": {
+        "question": "Do I need an internet connection to use it?",
+        "answer": "Yes, you need an internet connection to use Shifts. Since it works online, you'll need to be connected to access your data and manage your business. Right now, offline features are not available."
+      },
+      "4": {
+        "question": "I don't know how to get started.",
+        "answer": "If you're unsure where to start, you can request a demo or watch our easy-to-follow tutorials. These will show you how to set up your business, add employees, and start using the platform."
+      },
+      "5": {
+        "question": "Do you offer a free plan?",
+        "answer": "Yes, we have a free plan for businesses with up to 3 employees. It includes basic features to help you get started. If you need more features or have more employees, we also offer paid plans."
+      }
+    },
+    "link": "Contact us"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "It seems you've ventured into uncharted territory. Let's get you back on track!",
+    "link": "Go back"
+  },
+  "error": {
+    "title": "Something went wrong!",
+    "description": "We apologize for the inconvenience. Our team has been notified and is working on a fix.",
+    "link": "Try again"
   },
   "notification": {
     "request": {
