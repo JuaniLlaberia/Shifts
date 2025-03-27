@@ -35,7 +35,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextTopLoader showSpinner={false} />
+        <NextTopLoader showSpinner={false} color='#FFD230' />
         <Toaster />
 
         <ReactQueryProvider>
