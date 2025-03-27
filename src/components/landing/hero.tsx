@@ -15,10 +15,9 @@ const Hero = () => {
   return (
     <section className='relative w-full md:w-[90%] mt-2 px-2 md:px-20'>
       <motion.h1
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 10 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
         className='px-4 md:px-0 text-5xl md:text-7xl font-bold leading-tight relative z-30'
       >
         {t('title')}
@@ -30,19 +29,17 @@ const Hero = () => {
         </span>
       </motion.h1>
       <motion.h2
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
         className='px-4 md:px-0 text-xl md:text-3xl font-light max-w-5xl mt-8 relative z-30'
       >
         {t('description')}
       </motion.h2>
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 10 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
         className='flex flex-col items-center md:flex-row md:items-start gap-3 mt-12 relative z-40'
       >
         <div className='px-4 md:px-0 flex flex-col items-center gap-2.5 w-full md:w-auto'>
