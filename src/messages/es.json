@@ -120,7 +120,7 @@
       "links": {
         "features": {
           "label": "Características",
-          "link": "#features"
+          "link": "/#features"
         },
         "whats_new": {
           "label": "¿Qué hay de nuevo?",

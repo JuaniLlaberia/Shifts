@@ -121,7 +121,7 @@
       "links": {
         "features": {
           "label": "Features",
-          "link": "#features"
+          "link": "/#features"
         },
         "whatsNew": {
           "label": "What's new?",
