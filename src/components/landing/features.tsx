@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { CalendarDays, Clock1, MapPin, PartyPopper, Users } from 'lucide-react';
+import { use } from 'react';
 
 import { buttonVariants } from '../ui/button';
 import { cn } from '@/lib/utils';
+import { CursorContext } from '@/app/context/cursor-context';
 
 const ICONS = {
   scheduling: <CalendarDays className='size-16' strokeWidth={1} />,
@@ -20,10 +22,16 @@ const Features = () => {
   const t = useTranslations('homepage.features');
   const keys = ['scheduling', 'roles', 'clock', 'location', 'events'] as const;
 
+  const { setCursorVariant } = use(CursorContext);
+
   return (
     <section
       className='w-full md:w-[90%] min-h-screen py-32 px-2 md:px-20'
       id='features'
+      onMouseEnter={() =>
+        setCursorVariant({ variant: 'hover', content: 'Scroll' })
+      }
+      onMouseLeave={() => setCursorVariant({ variant: 'default' })}
     >
       <div className='px-4 md:px-0 grid md:grid-cols-2 gap-16'>
         <div className='md:sticky md:top-24 self-start space-y-8 z-10'>
@@ -37,6 +45,10 @@ const Features = () => {
               buttonVariants({ size: 'lg' }),
               'w-full text-base md:text-sm md:w-auto'
             )}
+            onMouseEnter={() => setCursorVariant({ variant: 'default' })}
+            onMouseLeave={() =>
+              setCursorVariant({ variant: 'hover', content: 'Scroll' })
+            }
           >
             {t('buttonAction')}
           </Link>
