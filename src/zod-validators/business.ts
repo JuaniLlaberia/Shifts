@@ -6,12 +6,7 @@ export const createBusinessValidator = z.object({
     .string()
     .min(4, { message: 'Min. 4 charac. for the name' })
     .max(30, { message: 'Name must have less than 30 charc.' }),
-  image: z.optional(z.string()),
   industry: z.nativeEnum(Industry),
-  ownerRole: z
-    .string()
-    .min(4, { message: 'Min. 4 charac. for the role' })
-    .max(30, { message: 'Role must have less than 30 charc.' }),
 });
 
 export const updateBusinessValidator = z.object({
