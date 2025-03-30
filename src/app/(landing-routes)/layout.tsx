@@ -1,7 +1,7 @@
 import Footer from '@/components/landing/footer';
 import Navbar from '@/components/landing/navbar';
 import type { ReactNode } from 'react';
-import { CursorProvider, CustomCursor } from '../context/cursor-context';
+import { CursorProvider, CustomCursor } from '../../context/cursor-context';
 import { ReactLenisWrapper } from '@/components/providers/react-lenis-provider';
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
