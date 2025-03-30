@@ -20,10 +20,7 @@
         }
       },
       "authButton": "Ir al negocio",
-      "unAuthButtons": {
-        "signIn": "Ingresar",
-        "getStarted": "Empezar ahora"
-      }
+      "unAuthButton": "Ingresar"
     },
     "hero": {
       "title": "Simplifica la Gestión de Turnos.",
@@ -151,6 +148,49 @@
           "link": "/support"
         }
       }
+    }
+  },
+  "signIn": {
+    "title": {
+      "content": "Simplifica los Turnos",
+      "span": "Hoy."
+    },
+    "subTitle": "Inicia sesión en tu cuenta de Shifts",
+    "disclaimer": {
+      "content": "Al continuar, reconoces que entiendes y aceptas los",
+      "tos": "Términos y Servicios",
+      "privacy": "Política de Privacidad",
+      "separator": "y"
+    },
+    "googleBtn": "Iniciar sesión con Google"
+  },
+  "authOnboarding": {
+    "header": {
+      "title": { "content": "Hoy.", "span": "Tipo de Cuenta" },
+      "subTitle": "Elige la Mejor Opción para Ti"
+    },
+    "cards": {
+      "business": {
+        "title": "Business",
+        "description": "Para gestionar empleados y horarios."
+      },
+      "employee": {
+        "title": "Employee",
+        "description": "Para trabajadores que administran turnos y tareas."
+      }
+    },
+    "help": {
+      "content": "¿Necesitas ayuda?",
+      "link": "Ir a tutoriales"
+    },
+    "userInvitations": {
+      "title": {
+        "content": "Invitaciones a",
+        "span": "Businesses."
+      },
+      "subTitle": "Selecciona una para unirte",
+      "empty": "No tienes invitaciones.",
+      "disclaimer": "Solo puedes ser parte de un business a la vez, pero eres libre de salir y unirte a otro cuando quieras."
     }
   },
   "about": {
@@ -293,6 +333,16 @@
     "title": "¡Algo salió mal!",
     "description": "Lamentamos la molestia. Nuestro equipo ha sido notificado y está trabajando en una solución.",
     "link": "Intentar de nuevo"
+  },
+  "accessDenied": {
+    "alert": "Restringido",
+    "title": {
+      "contentOne": "No tienes",
+      "span": "Acceso",
+      "contentTwo": "a este Business."
+    },
+    "description": "Parece que intentaste acceder a un negocio donde no eres empleado. ¡Vamos a llevarte de vuelta al camino correcto!",
+    "link": "Volver"
   },
   "notification": {
     "request": {

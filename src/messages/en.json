@@ -20,10 +20,7 @@
         }
       },
       "authButton": "Go to business",
-      "unAuthButtons": {
-        "signIn": "Sign in",
-        "getStarted": "Get started"
-      }
+      "unAuthButton": "Sign in"
     },
     "hero": {
       "title": "Simplify Shift Management.",
@@ -152,6 +149,49 @@
           "link": "/support"
         }
       }
+    }
+  },
+  "signIn": {
+    "title": {
+      "content": "Simplify Shifts",
+      "span": "Today."
+    },
+    "subTitle": "Sign in to your Shifts account",
+    "disclaimer": {
+      "content": "By continuing, you acknowledge that you understand and agree to the",
+      "tos": "Terms & Services",
+      "privacy": "Privacy Policy",
+      "separator": "and"
+    },
+    "googleBtn": "Sign in with Google"
+  },
+  "authOnboarding": {
+    "header": {
+      "title": { "content": "Today.", "span": "Account Type" },
+      "subTitle": "Pick the Best Fit for You"
+    },
+    "cards": {
+      "business": {
+        "title": "Business",
+        "description": "For managing employees and schedules."
+      },
+      "employee": {
+        "title": "Employee",
+        "description": "For workers to manage shifts and tasks."
+      }
+    },
+    "help": {
+      "content": "Need some help?",
+      "link": "Go to tutorials"
+    },
+    "userInvitations": {
+      "title": {
+        "content": "Businesses",
+        "span": "Invitations."
+      },
+      "subTitle": "Select One to Join",
+      "empty": "You have 0 invitations.",
+      "disclaimer": "You can only be part of one business at a time, but you’re free to leave and join another whenever you like."
     }
   },
   "about": {
@@ -294,6 +334,16 @@
     "title": "Something went wrong!",
     "description": "We apologize for the inconvenience. Our team has been notified and is working on a fix.",
     "link": "Try again"
+  },
+  "accessDenied": {
+    "alert": "Restricted",
+    "title": {
+      "contentOne": "You have",
+      "span": "No Access",
+      "contentTwo": "to this Business."
+    },
+    "description": "It seems you've tried to access a bussiness where you are not an employee. Let's get you back on track!",
+    "link": "Go back"
   },
   "notification": {
     "request": {
