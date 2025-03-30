@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Locale {
@@ -68,10 +67,11 @@ model User {
 }
 
 model Business {
-  id       String   @id @default(cuid())
-  name     String
-  image    String?
-  industry Industry
+  id         String   @id @default(cuid())
+  name       String
+  image      String?
+  industry   Industry
+  configured Boolean  @default(false)
 
   BusinessEmployee Employee[]
   BusinessRole     Role[]
@@ -115,11 +115,12 @@ enum EmployeeStatus {
 }
 
 model Employee {
-  id         String         @id @default(cuid())
-  userId     String
-  businessId String
-  roleId     String
-  status     EmployeeStatus @default(PENDING)
+  id                  String         @id @default(cuid())
+  userId              String
+  businessId          String
+  roleId              String
+  status              EmployeeStatus @default(PENDING)
+  completedOnboarding Boolean        @default(false)
 
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   business     Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)

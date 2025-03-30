@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
-import { notFound } from 'next/navigation';
 
 import { auth } from './auth';
-import { db } from './db';
+
+const ADMIN_ONLY_ROUTES = [
+  /\/business\/[^\/]+\/settings/,
+  /\/business\/[^\/]+\/users/,
+  /\/business\/[^\/]+\/billing/,
+];
 
 export default auth(async req => {
   const url = req.nextUrl.clone();
@@ -18,47 +22,33 @@ export default auth(async req => {
   if (businessIdMatch) {
     const businessId = businessIdMatch[1];
 
-    const user = await db.user.findUnique({
-      where: { email: req.auth.user?.email },
-      select: { id: true },
+    const isAdminRoute = ADMIN_ONLY_ROUTES.some(pattern =>
+      pattern.test(url.pathname)
+    );
+
+    const response = await fetch(`${req.nextUrl.origin}/api/autorization`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: req.auth.user.email,
+        businessId,
+        requestedPath: url.pathname,
+        requiresAdmin: isAdminRoute,
+      }),
     });
-    if (!user) return notFound();
+    // TODO: Check if there is a way of caching this to make it more efficient
 
-    const userId = user.id;
+    const result = await response.json();
+    if (!result.authorized) {
+      console.log('Error: ', result.error);
 
-    const cacheKey = `biz_member_${userId}_${businessId}`;
-    const cachedValue = req.cookies.get(cacheKey)?.value;
-
-    if (cachedValue === 'true') return NextResponse.next();
-    else if (cachedValue === 'false') {
-      url.pathname = '/sign-in';
+      url.pathname = result.redirectUrl;
       return NextResponse.redirect(url);
     }
 
-    const isMember = await db.employee.findUnique({
-      where: { businessId_userId: { businessId, userId } },
-    });
-
-    if (!isMember) {
-      const response = NextResponse.redirect(url);
-
-      response.cookies.set(cacheKey, 'false', {
-        httpOnly: true,
-        maxAge: 3600,
-        path: '/',
-      });
-      return response;
-    } else {
-      const response = NextResponse.next();
-
-      response.cookies.set(cacheKey, 'true', {
-        httpOnly: true,
-        maxAge: 3600,
-        path: '/',
-      });
-
-      return response;
-    }
+    return NextResponse.next();
   }
 
   return NextResponse.next();
