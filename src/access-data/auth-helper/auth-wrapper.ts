@@ -7,6 +7,7 @@ export const withAuth = <T, R>(
 ) => {
   return async (args: T): Promise<R> => {
     const user = await getAuthUser();
+    if (!user) throw new Error('Must be logged in');
 
     return handler({ ...args, userId: user.id });
   };

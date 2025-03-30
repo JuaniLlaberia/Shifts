@@ -12,6 +12,7 @@ export const withEmployee = <T extends { businessId: string }, R>(
 ) => {
   return async (args: T): Promise<R> => {
     const user = await getAuthUser();
+    if (!user) throw new Error('Must be logged in');
 
     const employee = await db.employee.findUnique({
       where: {

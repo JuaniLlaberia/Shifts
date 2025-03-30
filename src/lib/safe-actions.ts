@@ -3,8 +3,9 @@ import { getAuthUser } from '@/access-data/user/get-auth-user';
 
 export const authenticatedAction = createServerActionProcedure().handler(
   async () => {
-    const { id: userId } = await getAuthUser();
+    const user = await getAuthUser();
+    if (!user) throw new Error('Must be logged in');
 
-    return { userId };
+    return { userId: user.id };
   }
 );
