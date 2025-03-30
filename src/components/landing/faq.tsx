@@ -12,7 +12,7 @@ import {
 } from '../ui/accordion';
 import { buttonVariants } from '../ui/button';
 import { cn } from '@/lib/utils';
-import { CursorContext } from '@/app/context/cursor-context';
+import { CursorContext } from '@/context/cursor-context';
 
 const Faq = () => {
   const t = useTranslations('homepage.faq');

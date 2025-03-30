@@ -1,10 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, MoveRight, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useState } from 'react';
-import { User } from '@prisma/client';
+import { type ReactNode, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
@@ -12,10 +11,10 @@ import { Button, buttonVariants } from '../ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 type NavbarUIType = {
-  user?: User;
+  children: ReactNode;
 };
 
-const NavbarUI = ({ user }: NavbarUIType) => {
+const NavbarUI = ({ children }: NavbarUIType) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isShrinked, setShrinked] = useState<boolean>(false);
 
@@ -75,7 +74,9 @@ const NavbarUI = ({ user }: NavbarUIType) => {
         )}
       >
         <motion.div className='flex items-center w-full justify-between md:w-auto md:justify-normal'>
-          <h1 className='text-lg font-bold px-3'>Shifts</h1>
+          <Link href='/' className='text-lg font-bold px-3'>
+            Shifts
+          </Link>
 
           <Button
             size='icon'
@@ -115,33 +116,7 @@ const NavbarUI = ({ user }: NavbarUIType) => {
               </li>
             ))}
           </ul>
-          {user?.id ? (
-            <Link
-              href='/business'
-              className={cn(buttonVariants({ size: 'sm' }), 'group')}
-            >
-              {t(`authButton`)}
-              <MoveRight className='group-hover:translate-x-1 transition-transform ml-2' />
-            </Link>
-          ) : (
-            <div className='flex flex-col md:flex-row gap-2 md:space-x-2'>
-              <Link
-                href='/login'
-                className={cn(
-                  buttonVariants({ size: 'sm', variant: 'outline' })
-                )}
-              >
-                {t(`unAuthButtons.signIn`)}
-              </Link>
-              <Link
-                href='/business-new'
-                className={cn(buttonVariants({ size: 'sm' }), 'group')}
-              >
-                {t(`unAuthButtons.getStarted`)}{' '}
-                <MoveRight className='group-hover:translate-x-1 transition-transform ml-2' />
-              </Link>
-            </div>
-          )}
+          {children}
         </motion.div>
       </motion.nav>
     </motion.div>

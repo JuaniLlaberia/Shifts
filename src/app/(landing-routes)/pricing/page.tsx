@@ -22,8 +22,8 @@ const PricingPage = () => {
       </header>
       {/* Price cards */}
       <section className='flex items-center mt-8 py-10 md:py-16 w-full'>
-        <ul className='w-full items-center grid md:grid-cols-3 *:bg-landing-main-card'>
-          <li className='border-2 border-r-0 border-landing-main-border/50 rounded-l-2xl p-6'>
+        <ul className='w-full items-center gap-2.5 grid md:grid-cols-3 *:bg-landing-main-card'>
+          <li className='border-2 border-landing-main-border/50 rounded-2xl p-6'>
             <h2 className='text-3xl font-medium text-landing-main-text-primary'>
               Starter
             </h2>
@@ -112,7 +112,7 @@ const PricingPage = () => {
               </ul>
             </div>
           </li>
-          <li className='border-2 border-l-0 border-landing-main-border/50 rounded-r-2xl p-6'>
+          <li className='border-2 border-landing-main-border/50 rounded-2xl p-6'>
             <h2 className='text-3xl font-medium text-landing-main-text-primary'>
               Business
             </h2>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -28,7 +29,7 @@ const AboutPage = async () => {
       </section>
       <section className='space-y-4'>
         <h3 className='text-2xl font-medium mt-16'>{t('team.title')}</h3>
-        <ul className='flex'>
+        <ul className='flex gap-12'>
           <li className='flex flex-col items-center gap-4 p-2'>
             <Avatar className='size-32'>
               <AvatarFallback className='text-3xl bg-amber-300'>
@@ -36,10 +37,31 @@ const AboutPage = async () => {
               </AvatarFallback>
             </Avatar>
             <div className='text-center'>
-              <h4 className='text-lg text-landing-main-text-primary font-medium'>
+              <Link
+                href='https://www.linkedin.com/in/juan-ignacio-llaberia'
+                target='_blank'
+                className='text-lg text-landing-main-text-primary font-medium hover:underline'
+              >
                 Juan I. Llaberia
-              </h4>
-              <p className='text-landing-main-text-secondary'>Founder</p>
+              </Link>
+              <p className='text-landing-main-text-secondary'>Co-Founder</p>
+            </div>
+          </li>
+          <li className='flex flex-col items-center gap-4 p-2'>
+            <Avatar className='size-32'>
+              <AvatarFallback className='text-3xl bg-amber-300'>
+                M
+              </AvatarFallback>
+            </Avatar>
+            <div className='text-center'>
+              <Link
+                href='https://www.linkedin.com/in/mark-mysler'
+                target='_blank'
+                className='text-lg text-landing-main-text-primary font-medium hover:underline'
+              >
+                Mark Mysler
+              </Link>
+              <p className='text-landing-main-text-secondary'>Co-Founder</p>
             </div>
           </li>
         </ul>

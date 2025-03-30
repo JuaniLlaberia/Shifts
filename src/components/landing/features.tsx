@@ -8,7 +8,7 @@ import { use } from 'react';
 
 import { buttonVariants } from '../ui/button';
 import { cn } from '@/lib/utils';
-import { CursorContext } from '@/app/context/cursor-context';
+import { CursorContext } from '@/context/cursor-context';
 
 const ICONS = {
   scheduling: <CalendarDays className='size-16' strokeWidth={1} />,
