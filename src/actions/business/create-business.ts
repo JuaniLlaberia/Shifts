@@ -10,7 +10,7 @@ export const createBusiness = authenticatedAction
   .input(createBusinessValidator)
   .handler(async ({ input: { name, industry }, ctx: { userId } }) => {
     try {
-      await db.$transaction(async tx => {
+      const businessId = await db.$transaction(async tx => {
         // #1 Create business and get ID
         const { id: businessId } = await tx.business.create({
           data: {
@@ -41,17 +41,25 @@ export const createBusiness = authenticatedAction
         });
 
         // #4 Create employee
-        await tx.employee.create({
-          data: {
-            userId,
-            businessId,
-            roleId,
-            status: 'JOINED',
-          },
-        });
+        await Promise.all([
+          tx.employee.create({
+            data: {
+              userId,
+              businessId,
+              roleId,
+              status: 'JOINED',
+            },
+          }),
+          tx.user.update({
+            where: { id: userId },
+            data: { completedOnboarding: true },
+          }),
+        ]);
 
         return businessId;
       });
+
+      return businessId;
     } catch (error) {
       if (error instanceof Error) {
         console.log(`Transaction failed: ${error.message}`);

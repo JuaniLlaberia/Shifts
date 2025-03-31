@@ -49,13 +49,37 @@ export async function POST(request: Request) {
 
   const configured = employee.business.configured;
   const isEmployeeAdmin = employee.role.permissions === 'ADMIN';
-  // Check if user is admin and needs to complete configuration
-  if (isEmployeeAdmin && !configured) {
-    return NextResponse.json({
-      authorized: false,
-      redirectUrl: `/business/${businessId}/configure`,
-      error: 'business_needs_setup',
-    });
+  const isConfigurePath =
+    body.requestedPath === `/business/${businessId}/configure`;
+
+  if (isConfigurePath && !configured) {
+    if (isEmployeeAdmin) {
+      return NextResponse.json({
+        authorized: true,
+      });
+    } else {
+      return NextResponse.json({
+        authorized: false,
+        redirectUrl: `/access-denied`,
+        error: 'not_authorized_for_configuration',
+      });
+    }
+  }
+
+  if (!configured) {
+    if (isEmployeeAdmin) {
+      return NextResponse.json({
+        authorized: false,
+        redirectUrl: `/business/${businessId}/configure`,
+        error: 'business_needs_setup',
+      });
+    } else {
+      return NextResponse.json({
+        authorized: false,
+        redirectUrl: `/access-denied`,
+        error: 'business_not_configured',
+      });
+    }
   }
 
   //Check if user is not admin and route is "admin only" not allow
