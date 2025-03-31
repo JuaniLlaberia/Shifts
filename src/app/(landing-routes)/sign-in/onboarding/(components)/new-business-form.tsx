@@ -3,10 +3,10 @@
 import { Loader2, MoveRight } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Fragment } from 'react';
 import { Industry } from '@prisma/client';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 import InputWrapper from '@/components/ui/input-wrapper';
 import { createBusinessValidator } from '@/zod-validators/business';
@@ -41,7 +41,14 @@ const NewBusinessForm = () => {
 
   const steps: ('name' | 'industry')[] = ['name', 'industry'];
   const stepsCompoents = [
-    <Fragment key='step-1'>
+    <motion.div
+      initial={{ x: '50%', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: '-50%', opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      key='step-1'
+      className='space-y-8'
+    >
       <header className='text-2xl md:text-3xl font-semibold leading-tight'>
         <h1 className='text-landing-main-text-primary'>
           Create{' '}
@@ -62,8 +69,15 @@ const NewBusinessForm = () => {
           {...register('name')}
         />
       </InputWrapper>
-    </Fragment>,
-    <Fragment key='step-2'>
+    </motion.div>,
+    <motion.div
+      initial={{ x: '50%', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: '-50%', opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      key='step-2'
+      className='space-y-8'
+    >
       <header className='text-2xl md:text-3xl font-semibold leading-tight'>
         <h1 className='text-landing-main-text-primary'>
           Create{' '}
@@ -97,7 +111,7 @@ const NewBusinessForm = () => {
           ))}
         </ul>
       </InputWrapper>
-    </Fragment>,
+    </motion.div>,
   ];
 
   const {

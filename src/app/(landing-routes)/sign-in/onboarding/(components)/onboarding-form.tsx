@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { Building2, User } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 
 import NewBusinessForm from './new-business-form';
 import UserInvitationsList from './user-invitations-list';
-import { useTranslations } from 'next-intl';
 
 const OnboardingForm = () => {
   const t = useTranslations('authOnboarding');
@@ -16,7 +17,11 @@ const OnboardingForm = () => {
 
   if (!accountType)
     return (
-      <>
+      <motion.section
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <header className='text-2xl md:text-3xl font-semibold leading-tight'>
           <h1 className='text-landing-main-text-primary'>
             <span className='relative z-30'>
@@ -75,7 +80,7 @@ const OnboardingForm = () => {
             </span>
           </p>
         </div>
-      </>
+      </motion.section>
     );
 
   return (
