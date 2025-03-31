@@ -69,7 +69,11 @@ const Features = () => {
               viewport={{ amount: 0.99 }}
               className='w-full flex flex-col p-4 border-2 border-border rounded-2xl h-96 bg-landing-main-card text-landing-main-text-primary'
             >
-              <div className='flex-1 p-4'>{ICONS[key]}</div>
+              <div className='flex-1 p-4'>
+                <div className='bg-amber-300/75 border-2 border-landing-main-border/50 size-16 rounded-md flex items-center justify-center p-4'>
+                  {ICONS[key]}
+                </div>
+              </div>
               <div className='space-y-1.5'>
                 <h3 className='text-3xl'>{t(`features.${key}.title`)}</h3>
                 <p className='text-lg text-landing-main-text-secondary'>
