@@ -6,6 +6,12 @@ export const createDepartmentValidator = z.object({
   businessId: z.string().cuid({ message: 'Invalid business id' }),
 });
 
+export const createDepartmentWithRoleValidator = z.object({
+  departmentName: z.string().min(1, { message: 'Department name is required' }),
+  roleName: z.string().min(1, { message: 'Role name is required' }),
+  businessId: z.string().cuid({ message: 'Invalid business id' }),
+});
+
 export const updateDepartmentValidator = z.object({
   departmentId: z.string().cuid({ message: 'Invalid department id' }),
   name: z.optional(
