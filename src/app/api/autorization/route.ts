@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         select: { permissions: true },
       },
       completedOnboarding: true,
-      business: { select: { configured: true } },
+      business: { select: { completedOnboardingSteps: true } },
     },
   });
   // Check if user is employee
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const configured = employee.business.configured;
+  const configured = employee.business.completedOnboardingSteps === 4;
   const isEmployeeAdmin = employee.role.permissions === 'ADMIN';
   const isConfigurePath =
     body.requestedPath === `/business/${businessId}/configure`;
@@ -88,15 +88,6 @@ export async function POST(request: Request) {
       authorized: false,
       redirectUrl: `/business/${businessId}/my-shifts`,
       error: 'route_protected_for_admins',
-    });
-  }
-
-  // Check if employee has completed custom business onboarding
-  if (!employee.completedOnboarding) {
-    return NextResponse.json({
-      authorized: false,
-      redirectUrl: `/business/${businessId}/employee-onboarding`,
-      error: 'employee_onboarding_incomplete',
     });
   }
 
