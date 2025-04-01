@@ -17,7 +17,7 @@ const InputWrapper = ({
   error,
 }: InputWrapperProps) => {
   return (
-    <div className='space-y-2'>
+    <div className='space-y-2 w-full'>
       {label && <Label htmlFor={inputId}>{label}</Label>}
       {children}
       {error && (
