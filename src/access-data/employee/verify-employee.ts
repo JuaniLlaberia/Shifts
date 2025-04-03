@@ -3,9 +3,9 @@
 import { db } from '@/db';
 import { withAuth } from '../auth-helper/auth-wrapper';
 
-type getEmployeeType = {} & { userId: string };
+type verifyEmployeeType = {} & { userId: string };
 
-const getEmployeeBase = async ({ userId }: getEmployeeType) => {
+const verifyEmployeeBase = async ({ userId }: verifyEmployeeType) => {
   try {
     const employee = await db.employee.findFirst({
       where: { userId },
@@ -26,4 +26,4 @@ const getEmployeeBase = async ({ userId }: getEmployeeType) => {
   }
 };
 
-export const getEmployee = withAuth(getEmployeeBase);
+export const verifyEmployee = withAuth(verifyEmployeeBase);
