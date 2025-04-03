@@ -7,7 +7,8 @@ import { z } from 'zod';
 const f = createUploadthing();
 
 type MetadataParams = {
-  businessId: string;
+  businessId?: string;
+  userId: string;
   isOnboarding?: boolean;
 };
 
@@ -20,29 +21,36 @@ export const ourFileRouter = {
   })
     .input(
       z.object({
-        businessId: z.string(),
+        businessId: z.optional(z.string()),
         isOnboarding: z.optional(z.boolean()),
       })
     )
     .middleware(async ({ input }): Promise<MetadataParams> => {
-      const userId = await getAuthUser();
-      if (!userId) throw new UploadThingError('Unauthorized');
+      const user = await getAuthUser();
+      if (!user) throw new UploadThingError('Unauthorized');
 
       const { businessId, isOnboarding } = input;
 
-      return { businessId, isOnboarding };
+      return { businessId, userId: user.id, isOnboarding };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      const { businessId, isOnboarding } = metadata;
+      const { businessId, userId, isOnboarding } = metadata;
 
       try {
-        await db.business.update({
-          where: { id: businessId },
-          data: {
-            image: file.ufsUrl,
-            completedOnboardingSteps: isOnboarding ? { increment: 1 } : {},
-          },
-        });
+        if (businessId) {
+          await db.business.update({
+            where: { id: businessId },
+            data: {
+              image: file.ufsUrl,
+              completedOnboardingSteps: isOnboarding ? { increment: 1 } : {},
+            },
+          });
+        } else {
+          await db.user.update({
+            where: { id: userId },
+            data: { image: file.ufsUrl },
+          });
+        }
       } catch {
         throw new UploadThingError('Failed to update database');
       }
