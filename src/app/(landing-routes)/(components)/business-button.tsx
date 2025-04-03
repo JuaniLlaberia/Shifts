@@ -2,13 +2,13 @@ import Link from 'next/link';
 import { MoveRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
-import { getEmployee } from '@/access-data/employee/get-employee';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { verifyEmployee } from '@/access-data/employee/verify-employee';
 
 const BusinessButton = async () => {
   const t = await getTranslations('homepage.navbar');
-  const employee = await getEmployee({});
+  const employee = await verifyEmployee({});
 
   let link: string;
 
