@@ -10,6 +10,7 @@ export const getAuthUser = async () => {
   try {
     const user = await db.user.findUnique({
       where: { email: session.user?.email },
+      select: { id: true, locale: true },
     });
 
     if (!user) throw new Error('User not found');
