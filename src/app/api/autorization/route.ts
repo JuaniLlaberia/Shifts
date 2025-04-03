@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const configured = employee.business.completedOnboardingSteps === 4;
+  const configured = employee.business.completedOnboardingSteps >= 4;
   const isEmployeeAdmin = employee.role.permissions === 'ADMIN';
   const isConfigurePath =
     body.requestedPath === `/business/${businessId}/configure`;
