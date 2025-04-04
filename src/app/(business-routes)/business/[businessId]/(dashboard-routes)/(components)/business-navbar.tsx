@@ -1,5 +1,7 @@
-import { CircleHelp, Search } from 'lucide-react';
+import Link from 'next/link';
+import { CircleHelp, LucideIcon, Phone, Tv } from 'lucide-react';
 
+import BusinessSearchDialog from './business-search-dialog';
 import { Button } from '@/components/ui/button';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import {
@@ -7,38 +9,73 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import FeedbackDialog from '@/components/landing/feedback-dialog';
+
+const SUPPORT_LINKS: {
+  label: string;
+  icon: LucideIcon;
+  link: string;
+}[] = [
+  {
+    label: 'Contact us',
+    icon: Phone,
+    link: '/support',
+  },
+  {
+    label: 'FaQ',
+    icon: CircleHelp,
+    link: '/faq',
+  },
+  {
+    label: 'Tutorials',
+    icon: Tv,
+    link: '/support/tutorials',
+  },
+];
 
 const BusinessNavbar = () => {
   return (
     <nav className='h-[3.55rem] w-full flex justify-between items-center bg-background border-b border-sidebar-border p-2'>
       <SidebarTrigger className='rounded-lg size-9' />
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button className='inline-flex items-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input hover:bg-accent hover:text-primary px-3 py-2 relative h-8 justify-start rounded-lg bg-muted/40 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 w-48 lg:w-72 xl:w-84'>
-            <Search className='size-3.5' />
-            <span className='hidden lg:inline-flex'>Search here...</span>
-            <span className='inline-flex lg:hidden'>Search...</span>
-            <kbd className='pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded-lg border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex'>
-              <span className='text-[0.6rem]'>⌘</span>Enter
-            </kbd>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>Search about your business</TooltipContent>
-      </Tooltip>
-
+      <BusinessSearchDialog />
       <div className='space-x-2'>
-        <Button variant='outline' size='sm'>
-          Feedback
-        </Button>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button size='icon' variant='ghost' className='rounded-lg'>
-              <CircleHelp className='size-4' />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>Need some help?</TooltipContent>
-        </Tooltip>
+        <FeedbackDialog />
+        <Popover>
+          <Tooltip>
+            <PopoverTrigger asChild>
+              <TooltipTrigger asChild>
+                <Button size='icon' variant='ghost' className='rounded-lg'>
+                  <CircleHelp className='size-4' />
+                </Button>
+              </TooltipTrigger>
+            </PopoverTrigger>
+            <TooltipContent>Need some help?</TooltipContent>
+          </Tooltip>
+          <PopoverContent side='bottom' align='end'>
+            <h2 className='text-xs font-medium px-1 mb-1'>Need some help?</h2>
+            <div className='grid grid-cols-3 gap-2 w-auto'>
+              {SUPPORT_LINKS.map(({ label, icon: Icon, link }) => (
+                <Link
+                  key={link}
+                  href={link}
+                  className='flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-accent shrink-0 text-nowrap'
+                >
+                  <div className='flex items-center justify-center bg-background border-2 border-border text-amber-300 rounded-lg size-14 p-4'>
+                    <Icon />
+                  </div>
+                  <h6 className='text-xs font-medium text-muted-foreground'>
+                    {label}
+                  </h6>
+                </Link>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
       </div>
     </nav>
   );
