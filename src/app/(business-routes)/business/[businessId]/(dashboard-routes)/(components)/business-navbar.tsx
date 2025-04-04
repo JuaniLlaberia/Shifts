@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { CircleHelp, LucideIcon, Phone, Tv } from 'lucide-react';
 
 import BusinessSearchDialog from './business-search-dialog';
+import FeedbackDialog from '@/components/landing/feedback-dialog';
 import { Button } from '@/components/ui/button';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import {
@@ -14,7 +15,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import FeedbackDialog from '@/components/landing/feedback-dialog';
+import { isAdmin as getAdmin } from '@/access-data/auth-helper/isAdmin';
 
 const SUPPORT_LINKS: {
   label: string;
@@ -38,11 +39,13 @@ const SUPPORT_LINKS: {
   },
 ];
 
-const BusinessNavbar = () => {
+const BusinessNavbar = async ({ businessId }: { businessId: string }) => {
+  const { isAdmin } = await getAdmin({ businessId });
+
   return (
     <nav className='h-[3.55rem] w-full flex justify-between items-center bg-background border-b border-sidebar-border p-2'>
       <SidebarTrigger className='rounded-lg size-9' />
-      <BusinessSearchDialog />
+      <BusinessSearchDialog isAdmin={isAdmin} />
       <div className='space-x-2'>
         <FeedbackDialog />
         <Popover>

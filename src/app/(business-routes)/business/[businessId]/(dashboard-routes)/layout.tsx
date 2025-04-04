@@ -21,7 +21,7 @@ const BusinessDashboardLayout = async ({
     <SidebarProvider defaultOpen={defaultOpen}>
       <BusinessSidebar businessId={businessId} />
       <main className='w-full min-h-screen bg-background-2'>
-        <BusinessNavbar />
+        <BusinessNavbar businessId={businessId} />
         <div className='p-4'>{children}</div>
       </main>
     </SidebarProvider>

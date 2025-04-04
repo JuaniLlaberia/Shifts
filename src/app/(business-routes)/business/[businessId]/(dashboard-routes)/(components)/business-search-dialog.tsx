@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Link as LinkIcon, Search } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
+import { useParams } from 'next/navigation';
 
 import {
   Dialog,
@@ -150,11 +151,10 @@ const LINKS: {
   },
 ];
 
-const BusinessSearchDialog = () => {
+const BusinessSearchDialog = ({ isAdmin }: { isAdmin: boolean }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
-
-  const isAdmin = true;
+  const { businessId } = useParams<{ businessId: string }>();
 
   const filteredLinks = useMemo(() => {
     return LINKS.filter(link => {
@@ -228,7 +228,7 @@ const BusinessSearchDialog = () => {
                 {links.map(link => (
                   <li key={link.link}>
                     <Link
-                      href={`/business/asds/${link.link}`}
+                      href={`/business/${businessId}/${link.link}`}
                       className='flex items-center gap-2 p-2 rounded-lg hover:bg-accent hover:cursor-pointer transition-colors'
                     >
                       <LinkIcon
