@@ -22,7 +22,7 @@ const BusinessDashboardLayout = async ({
       <BusinessSidebar businessId={businessId} />
       <main className='w-full min-h-screen bg-background-2'>
         <BusinessNavbar businessId={businessId} />
-        <div className='p-4'>{children}</div>
+        {children}
       </main>
     </SidebarProvider>
   );
