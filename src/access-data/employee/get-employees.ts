@@ -26,7 +26,7 @@ const getEmployeesBase = async ({
         id: true,
         status: true,
         user: { select: { fullName: true, email: true, image: true } },
-        role: { select: { name: true, permissions: true } },
+        role: { select: { name: true, color: true, permissions: true } },
       },
       skip: (page - 1) * pageSize,
       take: pageSize,

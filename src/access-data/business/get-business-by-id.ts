@@ -16,6 +16,12 @@ const getBusinessByIdBase = async ({
   try {
     const business = await db.business.findUnique({
       where: { id: businessId },
+      select: {
+        id: true,
+        name: true,
+        industry: true,
+        image: true,
+      },
     });
     if (!business) return notFound();
 
