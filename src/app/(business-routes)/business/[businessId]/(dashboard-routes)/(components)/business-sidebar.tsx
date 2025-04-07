@@ -1,18 +1,14 @@
 import { notFound } from 'next/navigation';
 
-import BusinessLinks from './business-links';
-import BusinessMenu from './business-menu';
-import EmployeeMenu from './employee-menu';
 import {
   Sidebar,
-  SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarHeader,
   SidebarRail,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { getBusinessSidebarData } from '@/access-data/business/get-business-sidebar-data';
+import BusinessSidebarContent from './business-sidebar-content';
+import EmployeeMenu from './employee-menu';
 
 const BusinessSidebar = async ({ businessId }: { businessId: string }) => {
   const { sidebarData, isAdmin } = await getBusinessSidebarData({
@@ -22,18 +18,9 @@ const BusinessSidebar = async ({ businessId }: { businessId: string }) => {
 
   return (
     <Sidebar side='left' collapsible='icon'>
-      <SidebarHeader className='h-14'>
-        <BusinessMenu
-          business={{ ...sidebarData.business, plan: 'Standard' }}
-        />
-      </SidebarHeader>
+      <BusinessSidebarContent sidebarData={sidebarData} isAdmin={isAdmin} />
       <SidebarSeparator />
-      <SidebarContent>
-        <BusinessLinks isAdmin={isAdmin} />
-        <SidebarGroup />
-      </SidebarContent>
-      <SidebarSeparator />
-      <SidebarFooter>
+      <SidebarFooter className='h-14'>
         <EmployeeMenu
           business={sidebarData.business}
           role={sidebarData.role}

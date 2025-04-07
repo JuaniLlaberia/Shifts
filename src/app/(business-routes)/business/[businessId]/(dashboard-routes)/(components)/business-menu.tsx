@@ -50,7 +50,7 @@ type BusinessMenuProps = {
   };
 };
 
-const BusinessMenu = async ({ business }: BusinessMenuProps) => {
+const BusinessMenu = ({ business }: BusinessMenuProps) => {
   return (
     <SidebarMenu>
       <SidebarMenuItem>

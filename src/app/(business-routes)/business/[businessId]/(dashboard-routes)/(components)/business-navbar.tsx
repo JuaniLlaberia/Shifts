@@ -43,7 +43,7 @@ const BusinessNavbar = async ({ businessId }: { businessId: string }) => {
   const { isAdmin } = await getAdmin({ businessId });
 
   return (
-    <nav className='h-[3.55rem] w-full flex justify-between items-center bg-background border-b border-sidebar-border p-2'>
+    <nav className='sticky top-0 z-30 h-[3.55rem] w-full flex justify-between items-center bg-background border-b border-sidebar-border p-2'>
       <SidebarTrigger className='rounded-lg size-9' />
       <BusinessSearchDialog isAdmin={isAdmin} />
       <div className='space-x-2'>
