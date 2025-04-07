@@ -38,12 +38,14 @@ const LocationMarker = ({
   setPosition,
 }: {
   position: LatLngTuple;
-  setPosition: (newPosition: LatLngTuple) => void;
+  setPosition?: (newPosition: LatLngTuple) => void;
 }) => {
   useMapEvents({
     click(e) {
-      const newPos: LatLngTuple = [e.latlng.lat, e.latlng.lng];
-      setPosition(newPos);
+      if (setPosition) {
+        const newPos: LatLngTuple = [e.latlng.lat, e.latlng.lng];
+        setPosition(newPos);
+      }
     },
   });
 
@@ -65,7 +67,7 @@ const ChangeView = ({ center }: { center: LatLngTuple }) => {
 
 type MapProps = {
   initialZoom: number;
-  onLocationSelect: (newPosition: LatLngTuple) => void;
+  onLocationSelect?: (newPosition: LatLngTuple) => void;
   position?: LatLngTuple | null;
 };
 
@@ -97,6 +99,8 @@ const Map = ({
 
   // Get user's current location
   useEffect(() => {
+    if (externalPosition) return;
+
     if (navigator.geolocation) {
       setIsLoadingGeo(true);
       navigator.geolocation.getCurrentPosition(
@@ -111,7 +115,7 @@ const Map = ({
         { timeout: 10000 }
       );
     }
-  }, [handlePositionChange]);
+  }, [handlePositionChange, externalPosition]);
 
   return (
     <MapContainer
@@ -119,6 +123,7 @@ const Map = ({
       zoom={initialZoom}
       scrollWheelZoom={true}
       style={{ height: '100%', width: '100%', borderRadius: '8px' }}
+      dragging={onLocationSelect ? true : false}
     >
       {isLoadingGeo ? (
         <div className='flex flex-col items-center justify-center w-full h-full gap-2'>
@@ -133,7 +138,7 @@ const Map = ({
           <ChangeView center={position} />
           <LocationMarker
             position={position}
-            setPosition={handlePositionChange}
+            setPosition={onLocationSelect && handlePositionChange}
           />
         </>
       )}
