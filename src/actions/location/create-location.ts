@@ -3,6 +3,7 @@
 import { db } from '@/db';
 import { protectedAction } from '@/lib/protected-actions';
 import { createLocationValidator } from '@/zod-validators/location';
+import { revalidatePath } from 'next/cache';
 
 export const createLocation = protectedAction
   .createServerAction()
@@ -29,6 +30,8 @@ export const createLocation = protectedAction
               completedOnboardingSteps: { increment: 1 },
             },
           });
+        } else {
+          revalidatePath(`/business/${businessId}/settings/locations`);
         }
       } catch (error) {
         if (error instanceof Error) {

@@ -13,7 +13,7 @@ export const deleteEmployee = protectedAction
     try {
       await db.employee.delete({ where: { id: employeeId } });
 
-      revalidatePath(`/business/${businessId}/employees`);
+      revalidatePath(`/business/${businessId}/settings/employees`);
     } catch (error) {
       if (error instanceof Error) throw error.message;
       throw new Error('Unknown error occurred');
