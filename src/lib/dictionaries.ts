@@ -3,6 +3,11 @@ export const LOCALE_DICTIONARY = {
   ES: 'es',
 };
 
+export const LOCALE_LABELS: Record<string, string> = {
+  EN: 'English',
+  ES: 'Español',
+};
+
 export const INDUSTRY_LABELS: Record<string, string> = {
   GASTRONOMY: 'Gastronomy',
   HOSPITALITY: 'Hospitality',
