@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import ReactQueryProvider from '@/components/providers/react-query-provider';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
+import { ThemeProvider } from 'next-themes';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,16 +32,24 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} className='scroll-smooth'>
+    <html lang={locale} className='scroll-smooth' suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextTopLoader showSpinner={false} color='#FFD230' />
-        <Toaster />
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='light'
+          enableSystem
+          disableTransitionOnChange
+          enableColorScheme
+        >
+          <NextTopLoader showSpinner={false} color='#FFD230' />
+          <Toaster />
 
-        <ReactQueryProvider>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        </ReactQueryProvider>
+          <ReactQueryProvider>
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          </ReactQueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
