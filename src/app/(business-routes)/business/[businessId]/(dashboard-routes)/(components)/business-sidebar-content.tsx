@@ -121,7 +121,7 @@ const DASHBOARD_LINKS: SettingsLinkType[] = [
   {
     label: 'Settings',
     icon: Settings,
-    link: 'settings',
+    link: 'settings/general',
     requiresAdmin: true,
     soon: false,
   },
