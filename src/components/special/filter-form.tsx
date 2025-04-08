@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils';
 export type Filter = {
   label: string;
   field: string;
-  options: string[];
+  options: { label: string; value: string }[];
 };
 
 type SelectedFilter = {
@@ -42,15 +42,19 @@ const FiltersForm = ({ filters }: { filters: Filter[] }) => {
     filters.forEach(filter => {
       const paramValue = searchParams.get(filter.field);
       if (paramValue) {
-        // Split comma-separated values and create a filter for each
         const values = paramValue.split(',');
+
         values.forEach(value => {
-          // Only add if it's a valid option for this field
-          if (filter.options.includes(value)) {
+          const matchingOption = filter.options.find(
+            option => option.value === value
+          );
+
+          if (matchingOption) {
             newFilters.push({
-              id: `${filter.field}-${value}-${Date.now()}-${Math.random()}`,
+              id: `${filter.field}-${value}-${Date.now()}`,
               field: filter.field,
-              value: value,
+              value: matchingOption.value,
+              // label: matchingOption.label,
             });
           }
         });
@@ -220,11 +224,11 @@ const FiltersForm = ({ filters }: { filters: Filter[] }) => {
                           .find(f => f.field === filter.field)
                           ?.options.map(option => (
                             <SelectItem
-                              key={option}
-                              value={option}
+                              key={option.value}
+                              value={option.value}
                               className='capitalize'
                             >
-                              {option}
+                              {option.label}
                             </SelectItem>
                           ))}
                     </SelectContent>

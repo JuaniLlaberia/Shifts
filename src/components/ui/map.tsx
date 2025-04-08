@@ -121,7 +121,8 @@ const Map = ({
     <MapContainer
       center={position}
       zoom={initialZoom}
-      scrollWheelZoom={true}
+      zoomControl={onLocationSelect ? true : false}
+      scrollWheelZoom={onLocationSelect ? true : false}
       style={{ height: '100%', width: '100%', borderRadius: '8px' }}
       dragging={onLocationSelect ? true : false}
     >

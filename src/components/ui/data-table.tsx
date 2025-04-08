@@ -9,6 +9,7 @@ import {
   useReactTable,
   ColumnFiltersState,
   getFilteredRowModel,
+  Table as TableType,
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import { Search } from 'lucide-react';
@@ -29,8 +30,34 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   isLoading?: boolean;
-  filters?: { label: string; field: string; options: string[] }[];
+  filters?: {
+    label: string;
+    field: string;
+    options: { label: string; value: string }[];
+  }[];
 }
+
+type SearchbarFilterProps<TData> = {
+  table: TableType<TData>;
+};
+
+const SearchbarFilter = <TData,>({ table }: SearchbarFilterProps<TData>) => {
+  return (
+    <div className='relative flex items-center py-4'>
+      <Input
+        placeholder='Filter by email...'
+        value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
+        onChange={event =>
+          table.getColumn('email')?.setFilterValue(event.target.value)
+        }
+        className='max-w-sm pl-10 pr-20 bg-background'
+      />
+      <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+        <Search className='size-4 text-muted-foreground' />
+      </div>
+    </div>
+  );
+};
 
 export function DataTable<TData, TValue>({
   columns,
@@ -61,19 +88,7 @@ export function DataTable<TData, TValue>({
     <div className='relative'>
       <div className='flex justify-end items-center gap-2'>
         {filters && <FiltersForm filters={filters} />}
-        <div className='relative flex items-center py-4'>
-          <Input
-            placeholder='Filter by email...'
-            value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
-            onChange={event =>
-              table.getColumn('email')?.setFilterValue(event.target.value)
-            }
-            className='max-w-sm pl-10 pr-20 bg-background'
-          />
-          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-            <Search className='size-4 text-muted-foreground' />
-          </div>
-        </div>
+        <SearchbarFilter table={table} />
       </div>
       <div className='overflow-auto'>
         <Table className='relative w-full'>
