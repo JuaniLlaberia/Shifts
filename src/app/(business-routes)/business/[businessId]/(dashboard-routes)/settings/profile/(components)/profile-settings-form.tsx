@@ -142,7 +142,7 @@ const ProfileSettingsForm = ({ userData }: ProfileSettingsFormProps) => {
         </SettingsCard>
         <SettingsCard
           title='Danger zone'
-          description='Choose light or dark mode, or switch your mode automatically based on your system settings.'
+          description='Permanently delete the account.'
         >
           <DeleteUserDialog>
             <div className='h-full flex items-center justify-end'>
