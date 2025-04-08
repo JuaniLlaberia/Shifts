@@ -58,7 +58,7 @@ export const columns: ColumnDef<EmployeeDataType>[] = [
   // Email address
   {
     id: 'email',
-    accessorKey: 'email',
+    accessorKey: 'user.email',
     header: ({ column }) => {
       return (
         <CustomTableHeader

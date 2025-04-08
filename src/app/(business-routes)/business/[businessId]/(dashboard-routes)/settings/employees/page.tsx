@@ -4,16 +4,52 @@ import { Users } from 'lucide-react';
 import { getEmployees } from '@/access-data/employee/get-employees';
 import { DataTable } from '@/components/ui/data-table';
 import { columns } from './(components)/employees-columns';
-import { EMPLOYEE_FILTERS } from '@/lib/filters';
 import { getDepartments } from '@/access-data/department/get-departments';
+import { DEFAULT_PAGE_SIZE, INITIAL_PAGE } from '@/lib/consts';
+import { EmployeeStatus } from '@prisma/client';
+
+const EMPLOYEE_FILTERS = {
+  admin: {
+    label: 'Is Administrator',
+    field: 'admin',
+    options: [
+      { label: 'True', value: 'true' },
+      { label: 'False', value: 'false' },
+    ],
+  },
+  status: {
+    label: 'Status',
+    field: 'status',
+    options: [
+      { label: 'Has joinned', value: 'JOINED' },
+      { label: 'Is Pending', value: 'PENDING' },
+    ],
+  },
+};
 
 const EmployeesPage = async ({
   params,
+  searchParams,
 }: {
   params: Promise<{ businessId: string }>;
+  searchParams: Promise<{
+    admin: string;
+    status: EmployeeStatus;
+    departmentId: string;
+    page: number;
+  }>;
 }) => {
   const { businessId } = await params;
-  const employees = await getEmployees({ businessId, pageSize: 10, page: 1 });
+  const { admin, status, departmentId, page } = await searchParams;
+
+  const employees = await getEmployees({
+    businessId,
+    admin,
+    status,
+    departmentId,
+    pageSize: DEFAULT_PAGE_SIZE,
+    page: page || INITIAL_PAGE,
+  });
 
   if (!employees.employees || !employees.isAdmin) return notFound();
 
@@ -21,8 +57,11 @@ const EmployeesPage = async ({
 
   const DYNAMIC_DEPARTMENTS_FILTER = {
     label: 'Department',
-    field: 'department',
-    options: departments.departments.map(department => department.name),
+    field: 'departmentId',
+    options: departments.departments.map(department => ({
+      label: department.name,
+      value: department.id,
+    })),
   };
 
   return (
