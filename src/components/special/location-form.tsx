@@ -284,6 +284,7 @@ interface LocationFormProps {
   locationData?: LocationWithNumberCoords;
   children?: ReactNode;
   onSuccess?: () => void;
+  onClose?: () => void;
 }
 
 interface LocationFormValues {
@@ -328,6 +329,7 @@ const LocationForm = ({
   businessId,
   locationData,
   onSuccess,
+  onClose,
   children,
 }: LocationFormProps) => {
   const isUpdateMode = Boolean(locationData?.id);
@@ -371,6 +373,7 @@ const LocationForm = ({
       }
       setIsResolvingAddress(false);
       setIsSearchingCoordinates(false);
+      onClose?.();
     }
     setIsOpen(open);
   };
