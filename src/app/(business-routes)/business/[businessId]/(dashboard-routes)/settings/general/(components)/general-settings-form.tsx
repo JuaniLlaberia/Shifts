@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Industry } from '@prisma/client';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'sonner';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Trash2 } from 'lucide-react';
 
 import SettingsCard from '../../(components)/settings-card';
 import InputWrapper from '@/components/ui/input-wrapper';
@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/select';
 import { INDUSTRY_LABELS } from '@/lib/dictionaries';
 import { Button } from '@/components/ui/button';
+import DeleteBusinessDialog from './delete-business-dialog';
 
 type GeneralSettingsFormProps = {
   businessData: {
@@ -125,6 +126,18 @@ const GeneralSettingsForm = ({ businessData }: GeneralSettingsFormProps) => {
               toast.success('Image updated sucessfully');
             }}
           />
+        </SettingsCard>
+        <SettingsCard
+          title='Danger zone'
+          description='Permanently delete the business and all related data.'
+        >
+          <DeleteBusinessDialog businessId={businessData.id}>
+            <div className='h-full flex items-center justify-end'>
+              <Button type='button' size='sm' variant='destructive'>
+                <Trash2 className='size-4 mr-1' /> Delete business
+              </Button>
+            </div>
+          </DeleteBusinessDialog>
         </SettingsCard>
       </ul>
       <div className='fixed bottom-0 left-0 h-[3.55rem] w-full p-4 flex items-center justify-end border-t border-border bg-background space-x-2'>
