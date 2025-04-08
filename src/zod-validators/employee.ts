@@ -1,11 +1,14 @@
 import { z } from 'zod';
 
-export const createEmployeeValidator = z.object({
+export const createEmployeesValidator = z.object({
   businessId: z.string().cuid({ message: 'Invalid business id' }),
-  roleId: z.string().cuid({ message: 'Invalid role id' }),
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string().email(),
+  employees: z.array(
+    z.object({
+      fullName: z.string(),
+      email: z.string().email(),
+      roleId: z.string().cuid({ message: 'Invalid role id' }),
+    })
+  ),
 });
 
 export const updateEmployeeValidator = z.object({
