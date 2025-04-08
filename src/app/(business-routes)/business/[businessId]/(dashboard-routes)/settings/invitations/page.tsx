@@ -1,10 +1,12 @@
-import { notFound } from 'next/navigation';
 import { MailPlus, Plus, UserPlus2 } from 'lucide-react';
-
-import { getBusinessById } from '@/access-data/business/get-business-by-id';
-import SettingsCard from '../(components)/settings-card';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+
+import SettingsCard from '../(components)/settings-card';
+import CreateEmployeeForm from './(components)/create-employee-form';
+import { Button } from '@/components/ui/button';
+import Badge from '@/components/ui/badge';
+import { getRoles } from '@/access-data/role/get-roles';
+import { notFound } from 'next/navigation';
 
 const InvitationsPage = async ({
   params,
@@ -12,9 +14,9 @@ const InvitationsPage = async ({
   params: Promise<{ businessId: string }>;
 }) => {
   const { businessId } = await params;
-  const business = await getBusinessById({ businessId });
 
-  if (!business.business || !business.isAdmin) return notFound();
+  const { roles, isAdmin } = await getRoles({ businessId });
+  if (!isAdmin) return notFound();
 
   return (
     <section className='relative space-y-4'>
@@ -31,10 +33,12 @@ const InvitationsPage = async ({
           separatorPosition='bottom'
         >
           <div className='h-full flex items-center justify-end'>
-            <Button size='sm'>
-              <Plus className='size-4 mr-1' />
-              Add employees
-            </Button>
+            <CreateEmployeeForm businessId={businessId} roles={roles}>
+              <Button size='sm'>
+                <Plus className='size-4 mr-1' />
+                Add employees
+              </Button>
+            </CreateEmployeeForm>
           </div>
         </SettingsCard>
         <div className='w-full h-64 bg-background/25 flex flex-col gap-2 items-center justify-center border-2 border-border border-dashed rounded-xl'>
@@ -50,6 +54,7 @@ const InvitationsPage = async ({
               </Link>
             </span>
           </p>
+          <Badge color='orange'>Comming soon</Badge>
         </div>
       </div>
     </section>
