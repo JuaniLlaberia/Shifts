@@ -38,7 +38,7 @@ const DeleteUserDialog = ({ children, onSuccess }: DeleteUserDialogProps) => {
         toast.success('Account deleted successfully');
         setIsOpen(false);
       },
-      onError: () => toast.error('Failed to delete startup'),
+      onError: () => toast.error('Failed to delete account'),
     }
   );
 
@@ -58,7 +58,7 @@ const DeleteUserDialog = ({ children, onSuccess }: DeleteUserDialogProps) => {
             <DialogTitle className='text-base'>Confirm Deletion</DialogTitle>
             <DialogDescription className='text-center max-w-sm'>
               You are about to delete your account and all of it&apos;s data.
-              Business owned by this user will be deleted as well.{' '}
+              Businesses owned by this user will be deleted as well.{' '}
               <span className='text-red-500 font-medium'>
                 This action is irreversible.
               </span>
