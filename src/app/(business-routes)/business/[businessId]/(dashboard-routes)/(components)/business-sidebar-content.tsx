@@ -161,7 +161,7 @@ const SETTINGS_LINKS: SettingsLinkType[] = [
     icon: ArrowBigUpDashIcon,
     link: 'settings/billing',
     requiresAdmin: true,
-    soon: false,
+    soon: true,
   },
   {
     label: 'Integrations',

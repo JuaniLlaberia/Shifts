@@ -2,37 +2,62 @@
 
 import { db } from '@/db';
 import { protectedAction } from '@/lib/protected-actions';
-import { createEmployeeValidator } from '@/zod-validators/employee';
+import { createEmployeesValidator } from '@/zod-validators/employee';
 
-export const createEmployee = protectedAction
+export const createEmployees = protectedAction
   .createServerAction()
-  .input(createEmployeeValidator)
-  .handler(
-    async ({ input: { businessId, roleId, firstName, lastName, email } }) => {
-      try {
-        await db.$transaction(async tx => {
-          const { id: userId } = await tx.user.create({
-            data: {
-              fullName: firstName + lastName,
-              email,
+  .input(createEmployeesValidator)
+  .handler(async ({ input: { businessId, employees } }) => {
+    try {
+      await db.$transaction(async tx => {
+        const existingUsers = await tx.user.findMany({
+          where: {
+            email: {
+              in: employees.map(e => e.email),
             },
-          });
+          },
+          select: {
+            id: true,
+            email: true,
+          },
+        });
 
-          // Check if user already exists
+        const userEmailToId: Record<string, string> = {};
+        for (const user of existingUsers) {
+          userEmailToId[user.email] = user.id;
+        }
+
+        for (const employee of employees) {
+          const { email, fullName, roleId } = employee;
+
+          let userId = userEmailToId[email];
+
+          if (!userId) {
+            const user = await tx.user.create({
+              data: {
+                fullName,
+                email,
+              },
+              select: { id: true },
+            });
+            userId = user.id;
+            userEmailToId[email] = userId;
+          }
 
           await tx.employee.create({
             data: {
               userId,
               businessId,
               roleId,
+              status: 'PENDING',
             },
           });
-        });
+        }
+      });
 
-        //Send email
-      } catch (error) {
-        if (error instanceof Error) throw error.message;
-        throw new Error('Unknown error occurred');
-      }
+      //Send email
+    } catch (error) {
+      if (error instanceof Error) throw error.message;
+      throw new Error('Unknown error occurred');
     }
-  );
+  });

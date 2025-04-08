@@ -11,7 +11,14 @@ export const deleteLocaiton = protectedAction
   .input(deleteLocationValidator)
   .handler(async ({ input: { businessId, locationId } }) => {
     try {
-      await db.event.delete({
+      const businessLocations = await db.location.findMany({
+        where: { businessId },
+        select: { id: true },
+      });
+      if (businessLocations.length === 1)
+        throw new Error('You cannot delete your only location');
+
+      await db.location.delete({
         where: { id: locationId },
       });
 
