@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
 const SettingsCard = ({
@@ -5,14 +6,21 @@ const SettingsCard = ({
   title,
   description,
   inputId,
+  separatorPosition = 'top',
 }: {
   children: ReactNode;
   title: string;
   description: string;
   inputId?: string;
+  separatorPosition?: 'bottom' | 'top';
 }) => {
   return (
-    <li className='grid grid-cols-1 gap-5 md:gap-1 md:grid-cols-2 w-full border-t border-border py-5 px-3'>
+    <li
+      className={cn(
+        'grid grid-cols-1 gap-5 md:gap-1 md:grid-cols-2 w-full border-border py-5 px-3',
+        separatorPosition === 'top' ? 'border-t' : 'border-b'
+      )}
+    >
       <div>
         <label htmlFor={inputId} className='text-sm font-medium'>
           {title}
