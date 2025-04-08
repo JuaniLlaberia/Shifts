@@ -145,7 +145,7 @@ const ProfileSettingsForm = ({ userData }: ProfileSettingsFormProps) => {
           description='Choose light or dark mode, or switch your mode automatically based on your system settings.'
         >
           <DeleteUserDialog>
-            <div className='flex items-center justify-end'>
+            <div className='h-full flex items-center justify-end'>
               <Button type='button' size='sm' variant='destructive'>
                 <Trash2 className='size-4 mr-1' /> Delete account
               </Button>
