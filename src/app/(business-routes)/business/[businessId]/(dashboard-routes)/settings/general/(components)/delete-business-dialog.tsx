@@ -47,7 +47,7 @@ const DeleteBusinessDialog = ({
     }
   );
 
-  const handleDeleteStartup = async () => {
+  const handleDeleteBusiness = async () => {
     deleteBusiness({ businessId });
   };
 
@@ -76,7 +76,7 @@ const DeleteBusinessDialog = ({
               disabled={isPending}
               size='sm'
               variant='destructive'
-              onClick={handleDeleteStartup}
+              onClick={handleDeleteBusiness}
               className='w-full'
             >
               {isPending && <Loader2 className='size-4 animate-spin' />}

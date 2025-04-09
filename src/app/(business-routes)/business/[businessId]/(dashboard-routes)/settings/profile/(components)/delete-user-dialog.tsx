@@ -42,7 +42,7 @@ const DeleteUserDialog = ({ children, onSuccess }: DeleteUserDialogProps) => {
     }
   );
 
-  const handleDeleteStartup = async () => {
+  const handleDeleteUser = async () => {
     deleteUser({});
   };
 
@@ -72,7 +72,7 @@ const DeleteUserDialog = ({ children, onSuccess }: DeleteUserDialogProps) => {
               disabled={isPending}
               size='sm'
               variant='destructive'
-              onClick={handleDeleteStartup}
+              onClick={handleDeleteUser}
               className='w-full'
             >
               {isPending && <Loader2 className='size-4 animate-spin' />}
