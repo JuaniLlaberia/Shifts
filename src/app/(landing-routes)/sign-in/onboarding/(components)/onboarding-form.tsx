@@ -2,14 +2,17 @@
 
 import Link from 'next/link';
 import { Building2, User } from 'lucide-react';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 
 import NewBusinessForm from './new-business-form';
-import UserInvitationsList from './user-invitations-list';
 
-const OnboardingForm = () => {
+const OnboardingForm = ({
+  userInvitationsList,
+}: {
+  userInvitationsList: ReactNode;
+}) => {
   const t = useTranslations('authOnboarding');
   const [accountType, setAccountType] = useState<
     'business' | 'employee' | undefined
@@ -88,7 +91,8 @@ const OnboardingForm = () => {
       {accountType === 'business' ? (
         <NewBusinessForm />
       ) : (
-        <UserInvitationsList />
+        // <UserInvitationsList />
+        userInvitationsList
       )}
     </section>
   );
