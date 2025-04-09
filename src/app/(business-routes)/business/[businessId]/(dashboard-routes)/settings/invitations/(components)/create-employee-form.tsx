@@ -118,7 +118,7 @@ const CreateEmployeeForm = ({
     <Drawer open={isOpen} onOpenChange={handleOpenChange}>
       <DrawerTrigger asChild>{children || <Button>Open</Button>}</DrawerTrigger>
       <DrawerContent>
-        <div className='mx-auto w-full max-w-4xl space-y-4'>
+        <div className='mx-auto w-full max-w-4xl space-y-4 px-8 md:px-2'>
           <DrawerHeader className='px-0'>
             <DrawerTitle className='text-xl'>Create New Employees</DrawerTitle>
             <DrawerDescription className='max-w-lg text-base'>
