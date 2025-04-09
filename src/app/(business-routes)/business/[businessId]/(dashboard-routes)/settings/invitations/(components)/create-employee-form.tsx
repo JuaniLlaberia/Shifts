@@ -1,9 +1,11 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { Loader2, Plus, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 
+import ImportEmployeesComponent from './import-employees-component';
+import SettingsCard from '../../(components)/settings-card';
 import InputWrapper from '@/components/ui/input-wrapper';
 import {
   Drawer,
@@ -27,7 +29,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-type Employee = {
+export type Employee = {
   id: string;
   fullName: string;
   email: string;
@@ -40,14 +42,9 @@ type CreateEmployeeFormProps = {
     id: string;
     name: string;
   }[];
-  children?: ReactNode;
 };
 
-const CreateEmployeeForm = ({
-  children,
-  roles,
-  businessId,
-}: CreateEmployeeFormProps) => {
+const CreateEmployeeForm = ({ roles, businessId }: CreateEmployeeFormProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [employees, setEmployees] = useState<Employee[]>([
     { id: crypto.randomUUID(), fullName: '', email: '', roleId: '' },
@@ -115,122 +112,144 @@ const CreateEmployeeForm = ({
   };
 
   return (
-    <Drawer open={isOpen} onOpenChange={handleOpenChange}>
-      <DrawerTrigger asChild>{children || <Button>Open</Button>}</DrawerTrigger>
-      <DrawerContent>
-        <div className='mx-auto w-full max-w-4xl space-y-4 px-8 md:px-2'>
-          <DrawerHeader className='px-0'>
-            <DrawerTitle className='text-xl'>Create New Employees</DrawerTitle>
-            <DrawerDescription className='max-w-lg text-base'>
-              Add all needed information about each employee. They will receive
-              an invitation and an email to be able to join your business.
-            </DrawerDescription>
-          </DrawerHeader>
-
-          <ul className='space-y-4'>
-            {employees.map((employee, index) => (
-              <li key={employee.id} className='flex items-end gap-2'>
-                <InputWrapper
-                  inputId={`fullName-${employee.id}`}
-                  label={index === 0 ? 'Full name' : ''}
-                >
-                  <Input
-                    id={`fullName-${employee.id}`}
-                    value={employee.fullName}
-                    onChange={e =>
-                      updateEmployee(employee.id, 'fullName', e.target.value)
-                    }
-                    placeholder='Full name'
-                    disabled={isPending}
-                  />
-                </InputWrapper>
-
-                <InputWrapper
-                  inputId={`email-${employee.id}`}
-                  label={index === 0 ? 'Email address' : ''}
-                >
-                  <Input
-                    id={`email-${employee.id}`}
-                    value={employee.email}
-                    onChange={e =>
-                      updateEmployee(employee.id, 'email', e.target.value)
-                    }
-                    placeholder='Email address'
-                    type='email'
-                    disabled={isPending}
-                  />
-                </InputWrapper>
-
-                <InputWrapper label={index === 0 ? 'Position' : ''}>
-                  <Select
-                    value={employee.roleId}
-                    onValueChange={val =>
-                      updateEmployee(employee.id, 'roleId', val)
-                    }
-                  >
-                    <SelectTrigger className='w-full'>
-                      <SelectValue placeholder='Employee position' />
-                    </SelectTrigger>
-                    <SelectContent className='z-[100]'>
-                      {roles.map(({ id, name }) => (
-                        <SelectItem key={id} value={id}>
-                          {name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </InputWrapper>
-
-                <Button
-                  type='button'
-                  variant='ghost'
-                  size='icon'
-                  className='size-9 rounded-lg hover:text-red-500'
-                  onClick={() => removeEmployee(employee.id)}
-                  disabled={employees.length === 1 || isPending}
-                >
-                  <Trash2 size={18} />
-                </Button>
-              </li>
-            ))}
-
-            <Button
-              type='button'
-              variant='outline'
-              size='sm'
-              onClick={addEmployee}
-              className='flex items-center gap-1'
-              disabled={isPending}
-            >
-              <Plus size={16} />
-              Add another employee
-            </Button>
-          </ul>
-
-          <DrawerFooter className='flex flex-row justify-end items-center px-0'>
-            <DrawerClose asChild>
-              <Button size='sm' variant='outline' disabled={isPending}>
-                Cancel
+    <div className='p-8 pt-2 space-y-6'>
+      <Drawer open={isOpen} onOpenChange={handleOpenChange}>
+        <SettingsCard
+          title='Add new employees'
+          description='Invite your current or new employees. They will receive an email/invitation to be able to join.'
+          separatorPosition='bottom'
+        >
+          <div className='h-full flex items-center justify-end'>
+            <DrawerTrigger asChild>
+              <Button size='sm'>
+                <Plus className='size-4 mr-1' />
+                Add employees
               </Button>
-            </DrawerClose>
-            <Button
-              size='sm'
-              onClick={handleSubmit}
-              disabled={
-                employees.some(e => !e.fullName || !e.email || !e.roleId) ||
-                isPending
-              }
-            >
-              Create{' '}
-              {employees.length > 1
-                ? `${employees.length} employees`
-                : 'employee'}
-              {isPending && <Loader2 className='size-4 ml-1 animate-spin' />}
-            </Button>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
-    </Drawer>
+            </DrawerTrigger>
+          </div>
+        </SettingsCard>
+        <DrawerContent>
+          <div className='mx-auto w-full max-w-4xl space-y-4 px-8 md:px-2'>
+            <DrawerHeader className='px-0'>
+              <DrawerTitle className='text-xl'>
+                Create New Employees
+              </DrawerTitle>
+              <DrawerDescription className='max-w-lg text-base'>
+                Add all needed information about each employee. They will
+                receive an invitation and an email to be able to join your
+                business.
+              </DrawerDescription>
+            </DrawerHeader>
+
+            <ul className='space-y-4'>
+              {employees.map((employee, index) => (
+                <li key={employee.id} className='flex items-end gap-2'>
+                  <InputWrapper
+                    inputId={`fullName-${employee.id}`}
+                    label={index === 0 ? 'Full name' : ''}
+                  >
+                    <Input
+                      id={`fullName-${employee.id}`}
+                      value={employee.fullName}
+                      onChange={e =>
+                        updateEmployee(employee.id, 'fullName', e.target.value)
+                      }
+                      placeholder='Full name'
+                      disabled={isPending}
+                    />
+                  </InputWrapper>
+
+                  <InputWrapper
+                    inputId={`email-${employee.id}`}
+                    label={index === 0 ? 'Email address' : ''}
+                  >
+                    <Input
+                      id={`email-${employee.id}`}
+                      value={employee.email}
+                      onChange={e =>
+                        updateEmployee(employee.id, 'email', e.target.value)
+                      }
+                      placeholder='Email address'
+                      type='email'
+                      disabled={isPending}
+                    />
+                  </InputWrapper>
+
+                  <InputWrapper label={index === 0 ? 'Position' : ''}>
+                    <Select
+                      value={employee.roleId}
+                      onValueChange={val =>
+                        updateEmployee(employee.id, 'roleId', val)
+                      }
+                    >
+                      <SelectTrigger className='w-full'>
+                        <SelectValue placeholder='Employee position' />
+                      </SelectTrigger>
+                      <SelectContent className='z-[100]'>
+                        {roles.map(({ id, name }) => (
+                          <SelectItem key={id} value={id}>
+                            {name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </InputWrapper>
+
+                  <Button
+                    type='button'
+                    variant='ghost'
+                    size='icon'
+                    className='size-9 rounded-lg hover:text-red-500'
+                    onClick={() => removeEmployee(employee.id)}
+                    disabled={employees.length === 1 || isPending}
+                  >
+                    <Trash2 size={18} />
+                  </Button>
+                </li>
+              ))}
+
+              <Button
+                type='button'
+                variant='outline'
+                size='sm'
+                onClick={addEmployee}
+                className='flex items-center gap-1'
+                disabled={isPending}
+              >
+                <Plus size={16} />
+                Add another employee
+              </Button>
+            </ul>
+
+            <DrawerFooter className='flex flex-row justify-end items-center px-0'>
+              <DrawerClose asChild>
+                <Button size='sm' variant='outline' disabled={isPending}>
+                  Cancel
+                </Button>
+              </DrawerClose>
+              <Button
+                size='sm'
+                onClick={handleSubmit}
+                disabled={
+                  employees.some(e => !e.fullName || !e.email || !e.roleId) ||
+                  isPending
+                }
+              >
+                Create{' '}
+                {employees.length > 1
+                  ? `${employees.length} employees`
+                  : 'employee'}
+                {isPending && <Loader2 className='size-4 ml-1 animate-spin' />}
+              </Button>
+            </DrawerFooter>
+          </div>
+        </DrawerContent>
+      </Drawer>
+      <ImportEmployeesComponent
+        setDialogOpen={setIsOpen}
+        setEmployees={setEmployees}
+      />
+    </div>
   );
 };
 
