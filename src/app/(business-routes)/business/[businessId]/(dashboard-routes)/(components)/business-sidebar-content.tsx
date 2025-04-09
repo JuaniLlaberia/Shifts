@@ -164,16 +164,16 @@ const SETTINGS_LINKS: SettingsLinkType[] = [
     soon: true,
   },
   {
+    label: 'Export data',
+    icon: Import,
+    link: 'settings/exports',
+    requiresAdmin: true,
+    soon: false,
+  },
+  {
     label: 'Integrations',
     icon: Workflow,
     link: 'settings/integrations',
-    requiresAdmin: true,
-    soon: true,
-  },
-  {
-    label: 'Import & Exports',
-    icon: Import,
-    link: 'settings/imports-exports',
     requiresAdmin: true,
     soon: true,
   },
