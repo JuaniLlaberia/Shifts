@@ -25,3 +25,15 @@ export const INDUSTRY_LABELS: Record<string, string> = {
   WAREHOUSING: 'Warehousing',
   IT_AND_TECHNOLOGY: 'IT & Tech',
 };
+
+export const NOTIFICATIONS_TYPE_LABELS: Record<string, string> = {
+  REQUEST_STATUS: 'Request',
+  SHIFT_UPDATE: 'Shift',
+  EVENT_UPDATE: 'Event',
+  GENERAL_MESSAGE: 'General',
+};
+
+export const NOTIFICATIONS_STATUS_LABELS: Record<string, string> = {
+  READ: 'Read',
+  UNREAD: 'Unread',
+};
