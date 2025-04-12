@@ -20,9 +20,9 @@ const BusinessDashboardLayout = async ({
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <BusinessSidebar businessId={businessId} />
-      <main className='w-full min-h-screen bg-background-2'>
+      <main className='w-full h-screen bg-background-2 flex flex-col'>
         <BusinessNavbar businessId={businessId} />
-        {children}
+        <div className='flex-1 overflow-auto'>{children}</div>
       </main>
     </SidebarProvider>
   );
