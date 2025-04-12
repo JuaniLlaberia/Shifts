@@ -10,21 +10,27 @@ export const deleteNotification = memberAction
   .createServerAction()
   .input(deleteNotificationValidator)
   .handler(
-    async ({ input: { notificationId, businessId }, ctx: { employeeId } }) => {
+    async ({ input: { notifications, businessId }, ctx: { employeeId } }) => {
       try {
-        const notification = await db.notification.findUnique({
-          where: { id: notificationId },
+        const notificationsDB = await db.notification.findMany({
+          where: { id: { in: notifications } },
           select: {
             id: true,
             recipientId: true,
           },
         });
-        if (!notification) throw new Error('Notification not found');
+        if (!notifications) throw new Error('Notifications not found');
 
-        if (notification.recipientId !== employeeId)
+        if (
+          notificationsDB.some(
+            notification => notification.recipientId !== employeeId
+          )
+        )
           throw new Error('This notification does not belong to your');
 
-        await db.notification.delete({ where: { id: notification.id } });
+        await db.notification.deleteMany({
+          where: { id: { in: notifications } },
+        });
 
         revalidatePath(`/business/${businessId}/notifications`);
       } catch (error) {

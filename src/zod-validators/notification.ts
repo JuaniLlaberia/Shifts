@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
 export const deleteNotificationValidator = z.object({
-  notificationId: z.string().cuid({ message: 'Invalid notification Id' }),
+  notifications: z.array(
+    z.string().cuid({ message: 'Invalid notification Id' })
+  ),
   businessId: z.string().cuid({ message: 'Invalid business id' }),
 });
 

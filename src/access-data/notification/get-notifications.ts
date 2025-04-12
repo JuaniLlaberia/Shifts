@@ -27,7 +27,7 @@ const getNotificationsBase = async ({
     if (type) conditions.push({ type });
     if (status) conditions.push({ status });
 
-    const requests = await db.notification.findMany({
+    const notifications = await db.notification.findMany({
       where:
         conditions.length > 0
           ? { AND: conditions, recipientId: employeeId }
@@ -37,7 +37,7 @@ const getNotificationsBase = async ({
       take: pageSize,
     });
 
-    return { requests, isAdmin };
+    return { notifications, isAdmin };
   } catch (error) {
     if (error instanceof Error) throw error.message;
     throw new Error('Unknown error occurred');
