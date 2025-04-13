@@ -35,20 +35,27 @@ interface DataTableProps<TData, TValue> {
     field: string;
     options: { label: string; value: string }[];
   }[];
+  searchField: string;
 }
 
 type SearchbarFilterProps<TData> = {
   table: TableType<TData>;
+  field: string;
 };
 
-const SearchbarFilter = <TData,>({ table }: SearchbarFilterProps<TData>) => {
+const SearchbarFilter = <TData,>({
+  table,
+  field,
+}: SearchbarFilterProps<TData>) => {
+  const columnId = field as string;
+
   return (
     <div className='relative flex items-center py-4'>
       <Input
-        placeholder='Filter by email...'
-        value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
+        placeholder={`Filter by ${columnId}...`}
+        value={(table.getColumn(columnId)?.getFilterValue() as string) ?? ''}
         onChange={event =>
-          table.getColumn('email')?.setFilterValue(event.target.value)
+          table.getColumn(columnId)?.setFilterValue(event.target.value)
         }
         className='max-w-sm pl-10 pr-20 bg-background'
       />
@@ -64,6 +71,7 @@ export function DataTable<TData, TValue>({
   data,
   isLoading,
   filters,
+  searchField,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -88,7 +96,7 @@ export function DataTable<TData, TValue>({
     <div className='relative'>
       <div className='flex justify-end items-center gap-2'>
         {filters && <FiltersForm filters={filters} />}
-        <SearchbarFilter table={table} />
+        <SearchbarFilter table={table} field={searchField} />
       </div>
       <div className='overflow-auto'>
         <Table className='relative w-full'>
