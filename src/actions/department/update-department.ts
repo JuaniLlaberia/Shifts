@@ -10,13 +10,16 @@ export const updateDepartment = protectedAction
   .createServerAction()
   .input(updateDepartmentValidator)
   .handler(
-    async ({ input: { departmentId, name, description, businessId } }) => {
+    async ({
+      input: { departmentId, name, description, active, businessId },
+    }) => {
       try {
         await db.department.update({
           where: { id: departmentId },
           data: {
             name,
             description,
+            active,
           },
         });
 

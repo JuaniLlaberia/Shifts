@@ -1,27 +1,28 @@
 'server only';
 
+import { Prisma } from '@prisma/client';
+
 import { db } from '@/db';
 import { withEmployee } from '../auth-helper/employee-wrapper';
 
 type getDepartmentsType = {
   businessId: string;
+  active?: string;
 } & { userId: string; employeeId: string; isAdmin: boolean };
 
 const getDepartmentsBase = async ({
   businessId,
+  active,
   isAdmin,
 }: getDepartmentsType) => {
   try {
+    const conditions: Prisma.DepartmentWhereInput[] = [{ businessId }];
+
+    if (active) conditions.push({ active: active === 'true' ? true : false });
+
     const departments = await db.department.findMany({
-      where: { businessId },
+      where: { AND: conditions },
       include: {
-        roles: {
-          include: {
-            _count: {
-              select: { employee: true },
-            },
-          },
-        },
         _count: { select: { roles: true } },
       },
     });
