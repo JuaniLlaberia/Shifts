@@ -85,13 +85,6 @@ const DASHBOARD_LINKS: SettingsLinkType[] = [
     soon: false,
   },
   {
-    label: 'Employees',
-    icon: Users,
-    link: 'employees',
-    requiresAdmin: false,
-    soon: false,
-  },
-  {
     label: 'Requests',
     icon: Timer,
     link: 'requests',
