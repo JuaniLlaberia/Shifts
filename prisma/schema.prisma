@@ -97,10 +97,12 @@ model Location {
 }
 
 model Department {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   description String?
+  active      Boolean  @default(true)
   businessId  String
+  createdAt   DateTime @default(now())
 
   business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
   roles    Role[]
