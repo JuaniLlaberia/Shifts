@@ -19,7 +19,7 @@ const getEventsBase = async ({
   try {
     const events = await db.event.findMany({
       where: { businessId },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { date: 'desc' },
       skip: (page - 1) * pageSize,
       take: pageSize,
     });

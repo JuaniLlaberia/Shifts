@@ -1,5 +1,8 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
+import { format } from 'date-fns';
+
 import { db } from '@/db';
 import { protectedAction } from '@/lib/protected-actions';
 import { updateEventValidator } from '@/zod-validators/event';
@@ -35,12 +38,16 @@ export const updateEvent = protectedAction
             recipientId: id,
             messageData: {
               eventName: name,
-              eventDate: date,
+              eventDate: `${format(date, 'EEEE, MMMM d, yyyy')} at ${format(
+                date,
+                'hh:mm a'
+              )}`,
             },
           })
         );
 
         await Promise.all(notifications);
+        revalidatePath(`/business/${businessId}/events`);
       } catch (error) {
         if (error instanceof Error) throw error.message;
         throw new Error('Unknown error occurred');
