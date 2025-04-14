@@ -9,7 +9,6 @@ type getRequestsType = {
   businessId: string;
   type?: RequestType;
   status?: RequestStatus;
-  email?: string;
   pageSize: number;
   page: number;
 } & { userId: string; employeeId: string; isAdmin: boolean };
@@ -18,7 +17,6 @@ const getRequestsBase = async ({
   businessId,
   type,
   status,
-  email,
   isAdmin,
   page,
   pageSize,
@@ -28,13 +26,36 @@ const getRequestsBase = async ({
 
     if (type) conditions.push({ type });
     if (status) conditions.push({ status });
-    if (email) conditions.push({ employee: { user: { email } } });
+
+    const include: Prisma.RequestInclude = {
+      employee: {
+        select: { user: { select: { fullName: true, image: true } } },
+      },
+    };
+
+    if (!type || type === 'SWAP')
+      include.swapRequest = {
+        include: {
+          originalShift: { select: { id: true, startTime: true } },
+          requestedShift: { select: { id: true, startTime: true } },
+          swapWithUser: true,
+        },
+      };
+
+    if (!type || type === 'UNAVAILABLE') {
+      include.unavailableRequest = true;
+    }
+
+    if (!type || type === 'VACATION') {
+      include.vacationRequest = true;
+    }
 
     const requests = await db.request.findMany({
       where:
         conditions.length > 0
           ? { AND: conditions, businessId }
           : { businessId },
+      include,
       orderBy: { createdAt: 'desc' },
       skip: (page - 1) * pageSize,
       take: pageSize,

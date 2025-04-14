@@ -4,11 +4,12 @@ import { db } from '@/db';
 import { protectedAction } from '@/lib/protected-actions';
 import { rejectRequestValidator } from '@/zod-validators/request';
 import { createNotification } from '../notification/create-notification';
+import { revalidatePath } from 'next/cache';
 
 export const rejectRequest = protectedAction
   .createServerAction()
   .input(rejectRequestValidator)
-  .handler(async ({ input: { requestId, type, extraData } }) => {
+  .handler(async ({ input: { businessId, requestId, type, extraData } }) => {
     try {
       // Rejecting request
       await db.request.delete({
@@ -27,6 +28,8 @@ export const rejectRequest = protectedAction
         messageData: { ...extraData },
         recipientId: extraData.createdBy,
       });
+
+      revalidatePath(`/business/${businessId}/requests`);
     } catch (error) {
       if (error instanceof Error) throw error.message;
       throw new Error('Unknown error occurred');
