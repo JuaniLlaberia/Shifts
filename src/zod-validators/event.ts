@@ -28,7 +28,7 @@ export const updateEventValidator = z.object({
       .string()
       .max(250, { message: 'Event description must have less than 250 charc.' })
   ),
-  date: z.optional(z.coerce.date()),
+  date: z.coerce.date(),
   location: z.optional(z.string()),
   businessId: z.string().cuid({ message: 'Invalid business id' }),
 });
@@ -36,6 +36,6 @@ export const updateEventValidator = z.object({
 export const deleteEventValidator = z.object({
   eventId: z.string().cuid({ message: 'Invalid event id' }),
   businessId: z.string().cuid({ message: 'Invalid business id' }),
-  date: z.optional(z.coerce.date()),
+  date: z.coerce.date(),
   name: z.string(),
 });
