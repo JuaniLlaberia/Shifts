@@ -228,7 +228,6 @@ model UnavailableRequest {
   requestId String   @id
   startDate DateTime
   endDate   DateTime
-  comment   String?
 
   request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
 }
