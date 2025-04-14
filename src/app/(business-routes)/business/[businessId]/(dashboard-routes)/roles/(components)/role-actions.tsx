@@ -39,7 +39,6 @@ const RoleActions = ({ roleData }: RoleActionsProps) => {
         <RoleForm
           businessId={businessId}
           roleData={roleData}
-          departments={[]}
           onSuccess={() => setIsOpen(false)}
           onClose={() => setIsOpen(false)}
         >
