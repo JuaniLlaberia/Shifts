@@ -77,7 +77,7 @@ const EmployeesPage = async ({
         <DataTable
           data={employees.employees}
           columns={columns}
-          searchField='user.email'
+          searchField='email'
           filters={[
             EMPLOYEE_FILTERS.admin,
             EMPLOYEE_FILTERS.status,
