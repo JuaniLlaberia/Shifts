@@ -219,7 +219,11 @@ const ImportEmployeesComponent = ({
           <p className='text-sm text-muted-foreground'>
             You can import employees data.{' '}
             <span>
-              <Link href='/support/tutorials' className='underline'>
+              <Link
+                href='/support/tutorials'
+                className='underline'
+                onClick={e => e.stopPropagation()}
+              >
                 See how to do it.
               </Link>
             </span>
