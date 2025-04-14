@@ -37,3 +37,15 @@ export const NOTIFICATIONS_STATUS_LABELS: Record<string, string> = {
   READ: 'Read',
   UNREAD: 'Unread',
 };
+
+export const REQUEST_STATUS_LABELS: Record<string, string> = {
+  PENDING: 'Pending',
+  APPROVED: 'Approved',
+  REJECTED: 'Rejected',
+};
+
+export const REQUEST_TYPE_LABELS: Record<string, string> = {
+  SWAP: 'Shift Swap',
+  VACATION: 'Vacation',
+  UNAVAILABLE: 'Unavailable',
+};
