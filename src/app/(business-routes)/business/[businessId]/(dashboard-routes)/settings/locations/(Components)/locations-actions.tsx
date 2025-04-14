@@ -31,7 +31,7 @@ const LocationsActions = ({ locationData }: LocationActionsProps) => {
           variant='outline'
           size='icon'
           className={cn(
-            'absolute top-4 right-4 z-[500]',
+            'absolute top-4 right-4 z-[500] rounded-lg',
             isMenuOpen
               ? 'flex'
               : 'opacity-0 group-hover:opacity-100 focus:opacity-100'
